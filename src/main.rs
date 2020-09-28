@@ -44,14 +44,14 @@ fn main() {
             Arg::new("full_bar")
                 .short('f')
                 .long("full-bar")
-                .about("Set full bar string")
+                .about("Set full bar string (default: ▓)")
                 .takes_value(true),
         )
         .arg(
             Arg::new("rest_bar")
                 .short('r')
                 .long("rest-bar")
-                .about("Set rest bar string")
+                .about("Set rest bar string (default: ░)")
                 .takes_value(true),
         )
         .get_matches();
