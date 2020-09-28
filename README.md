@@ -26,6 +26,10 @@ $ cp target/release/bilal /usr/local/bin/
 
 Download the binary from the [Release](https://git.sr.ht/~azzamsa/zman.rs/refs/)
 
+Available binaries:
+- *Nix
+- Window PC
+
 
 ## Usage with other tools
 
