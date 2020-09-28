@@ -51,6 +51,12 @@ For reporting issues, visit the tracker here: https://todo.sr.ht/~azzamsa/Zman
 
 Zman is a 'time' in Arabic/Turksih.
 
+## Inspired By
+
+Please check out this previous work that helped inspire the creation of zman.
+
+- [@year_progress](https://twitter.com/year_progress) - The only progress bar you'd rather see go slower. [source](https://github.com/filiph/progress_bar)
+
 ## License
 
 Copyright (c) 2020 Azzamsa
