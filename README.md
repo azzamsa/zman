@@ -2,7 +2,7 @@
 
 **zman** is a CLI time progress that small, fast, and just one single binary.
 
-![demo](https://git.sr.ht/~azzamsa/blobs/blob/master/zman/zman.gif)
+![demo](https://git.sr.ht/~azzamsa/zman/blob/master/media/zman-demo.gif)
 
 ## Features
 
