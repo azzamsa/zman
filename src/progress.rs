@@ -1,25 +1,39 @@
 use chrono::prelude::*;
 
-fn get_time() -> (Date<Local>, Date<Local>, Date<Local>) {
-    let current = Local::today();
-    let start = Local.ymd(current.year(), 1, 1);
-    let end = Local.ymd(current.year() + 1, 1, 1);
-    return (current, start, end);
-}
+use crate::util::*;
 
-fn current_year_progress() -> f64 {
-    let (current, start, end) = get_time();
-
+fn get_progress(current: Date<Local>, start: Date<Local>, end: Date<Local>) -> f64 {
     let whole_diff = end - start;
     let whole_diff_in_seconds = whole_diff.num_days() * 86400 + whole_diff.num_seconds();
 
     let current_diff = current - start;
     let current_diff_in_seconds = current_diff.num_days() * 86400 + current_diff.num_seconds();
-    return current_diff_in_seconds as f64 / whole_diff_in_seconds as f64;
+    let progress_ratio = current_diff_in_seconds as f64 / whole_diff_in_seconds as f64;
+    return progress_ratio;
 }
 
-pub fn show_progress(width: i32) {
-    let progress_ratio = current_year_progress();
+pub fn year_progress_ratio() -> f64 {
+    let current = Local::today();
+    let start = Local.ymd(current.year(), 1, 1);
+    let end = Local.ymd(current.year() + 1, 1, 1);
+    return get_progress(current, start, end);
+}
+
+pub fn month_progress_ratio() -> f64 {
+    let current = Local::today();
+    let start = Local.ymd(current.year(), current.month(), 1);
+    let end = {
+        if current.month() == 12 {
+            let days_num = count_days_of_month(current.year(), current.month());
+            Local.ymd(current.year(), current.month(), days_num as u32)
+        } else {
+            Local.ymd(current.year(), current.month() + 1, 1)
+        }
+    };
+    return get_progress(current, start, end);
+}
+
+pub fn show_progress(progress_ratio: f64, width: i32) {
     let ratio_int = (progress_ratio * 100.0) as i32;
 
     let progress_int = (progress_ratio * width as f64).round() as i32;

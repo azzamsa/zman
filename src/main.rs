@@ -1,4 +1,5 @@
 mod progress;
+mod util;
 
 use clap::{crate_version, App, AppSettings, Arg};
 
@@ -43,9 +44,17 @@ fn main() {
     if matches.is_present("year") {
         show_year_progress();
     }
+    if matches.is_present("month") {
+        show_month_progress();
+    }
 }
 
-
 fn show_year_progress() {
-    progress::show_progress(20)
+    let ratio = progress::year_progress_ratio();
+    progress::show_progress(ratio, 20);
+}
+
+fn show_month_progress() {
+    let ratio = progress::month_progress_ratio();
+    progress::show_progress(ratio, 20);
 }
