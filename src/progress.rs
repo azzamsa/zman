@@ -4,6 +4,7 @@ use colored::*;
 
 use crate::util;
 
+// Calculate the ratio of time progress
 fn get_progress(current: Date<Local>, start: Date<Local>, end: Date<Local>) -> f64 {
     let whole_diff = end - start;
     let whole_diff_in_seconds = whole_diff.num_days() * 86400 + whole_diff.num_seconds();

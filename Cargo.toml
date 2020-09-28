@@ -1,5 +1,5 @@
 [package]
-name = "jaro"
+name = "zman"
 version = "0.1.0"
 authors = ["azzamsa <me@azzamsa.com>"]
 edition = "2018"
