@@ -16,8 +16,8 @@
 ## With cargo (from source)
 
 ``` bash
-$ git clone https://git.sr.ht/~azzamsa/zman.rs
-$ cd zman.rs
+$ git clone https://git.sr.ht/~azzamsa/zman
+$ cd zman
 $ cargo build --release
 $ cp target/release/bilal /usr/local/bin/
 ```
