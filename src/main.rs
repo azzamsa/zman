@@ -14,12 +14,7 @@ fn main() {
                 .long("year")
                 .about("Show current year progress"),
         )
-        .arg(
-            Arg::new("month")
-                .short('m')
-                .long("month")
-                .about("Show current month progress"),
-        )
+        .arg(Arg::new("month").short('m').long("month"))
         .arg(
             Arg::new("week")
                 .short('w')

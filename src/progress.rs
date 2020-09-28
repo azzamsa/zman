@@ -1,5 +1,6 @@
 use chrono::prelude::*;
 use chrono::Duration;
+use colored::*;
 
 use crate::util;
 
@@ -55,8 +56,16 @@ pub fn show_progress(progress_ratio: f64, width: i32, is_json: bool) {
     );
 
     if is_json {
-        println!("{}", util::to_json("".to_string(), progress_fmt));
+        if ratio_int > 90 {
+            println!("{}", util::to_json("Critical".to_string(), progress_fmt));
+        } else {
+            println!("{}", util::to_json("".to_string(), progress_fmt));
+        }
     } else {
-        println!("{}", progress_fmt);
+        if ratio_int > 90 {
+            println!("{}", progress_fmt.red());
+        } else {
+            println!("{}", progress_fmt);
+        }
     }
 }
