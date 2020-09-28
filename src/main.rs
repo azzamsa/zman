@@ -40,6 +40,20 @@ fn main() {
                 .about("Adjust width of the bar (default: 20)")
                 .takes_value(true),
         )
+        .arg(
+            Arg::new("full_bar")
+                .short('f')
+                .long("full-bar")
+                .about("Set full bar string")
+                .takes_value(true),
+        )
+        .arg(
+            Arg::new("rest_bar")
+                .short('r')
+                .long("rest-bar")
+                .about("Set rest bar string")
+                .takes_value(true),
+        )
         .get_matches();
 
     let config = config::Config {
@@ -53,6 +67,14 @@ fn main() {
             } else {
                 false
             }
+        },
+        full_bar: match matches.value_of("full_bar") {
+            None => "▓".to_string(),
+            Some(bar) => bar.parse::<String>().unwrap_or("▓".to_string()),
+        },
+        rest_bar: match matches.value_of("rest_bar") {
+            None => "░".to_string(),
+            Some(bar) => bar.parse::<String>().unwrap_or("░".to_string()),
         },
     };
 

@@ -52,8 +52,8 @@ pub fn show_progress(progress_ratio: f64, config: config::Config) {
 
     let progress_fmt = format!(
         "{}{} {}%",
-        "▓".repeat(progress_int as usize),
-        "░".repeat(rest_int as usize),
+        config.full_bar.repeat(progress_int as usize),
+        config.rest_bar.repeat(rest_int as usize),
         ratio_int
     );
 
