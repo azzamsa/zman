@@ -1,7 +1,7 @@
 use chrono::prelude::*;
 use chrono::Duration;
 
-use crate::util::*;
+use crate::util;
 
 fn get_progress(current: Date<Local>, start: Date<Local>, end: Date<Local>) -> f64 {
     let whole_diff = end - start;
@@ -25,7 +25,7 @@ pub fn month_progress_ratio() -> f64 {
     let start = Local.ymd(current.year(), current.month(), 1);
     let end = {
         if current.month() == 12 {
-            let days_num = count_days_of_month(current.year(), current.month());
+            let days_num = util::count_days_of_month(current.year(), current.month());
             Local.ymd(current.year(), current.month(), days_num as u32)
         } else {
             Local.ymd(current.year(), current.month() + 1, 1)
@@ -38,19 +38,25 @@ pub fn week_progress_ratio() -> f64 {
     let current = Local::today();
     let start = current - Duration::days(current.weekday().num_days_from_monday().into());
     let end = start + Duration::days(7);
-    return get_progress(current, start, end)
+    return get_progress(current, start, end);
 }
 
-pub fn show_progress(progress_ratio: f64, width: i32) {
+pub fn show_progress(progress_ratio: f64, width: i32, is_json: bool) {
     let ratio_int = (progress_ratio * 100.0) as i32;
 
     let progress_int = (progress_ratio * width as f64).round() as i32;
     let rest_int = width - progress_int;
 
-    println!(
+    let progress_fmt = format!(
         "{}{} {}%",
         "▓".repeat(progress_int as usize),
         "░".repeat(rest_int as usize),
         ratio_int
     );
+
+    if is_json {
+        println!("{}", util::to_json("".to_string(), progress_fmt));
+    } else {
+        println!("{}", progress_fmt);
+    }
 }

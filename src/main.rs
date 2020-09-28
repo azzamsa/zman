@@ -4,7 +4,6 @@ mod util;
 use clap::{crate_version, App, AppSettings, Arg};
 
 fn main() {
-    let mut _is_json: bool = false;
     let matches = App::new("Jaro [A CLI time progress bar]")
         .setting(AppSettings::ArgRequiredElseHelp)
         .setting(AppSettings::ColoredHelp)
@@ -35,34 +34,36 @@ fn main() {
         )
         .get_matches();
 
-    if matches.is_present("json") {
-        _is_json = true;
-    } else {
-        _is_json = false;
-    }
+    let is_json: bool = {
+        if matches.is_present("json") {
+            true
+        } else {
+            false
+        }
+    };
 
     if matches.is_present("year") {
-        show_year_progress();
+        show_year_progress(is_json);
     }
     if matches.is_present("month") {
-        show_month_progress();
+        show_month_progress(is_json);
     }
     if matches.is_present("week") {
-        show_week_progress();
+        show_week_progress(is_json);
     }
 }
 
-fn show_year_progress() {
+fn show_year_progress(is_json: bool) {
     let ratio = progress::year_progress_ratio();
-    progress::show_progress(ratio, 20);
+    progress::show_progress(ratio, 20, is_json);
 }
 
-fn show_month_progress() {
+fn show_month_progress(is_json: bool) {
     let ratio = progress::month_progress_ratio();
-    progress::show_progress(ratio, 20);
+    progress::show_progress(ratio, 20, is_json);
 }
 
-fn show_week_progress() {
+fn show_week_progress(is_json: bool) {
     let ratio = progress::week_progress_ratio();
-    progress::show_progress(ratio, 20);
+    progress::show_progress(ratio, 20, is_json);
 }

@@ -16,3 +16,12 @@ pub fn count_days_of_month(year: i32, month: u32) -> i64 {
         .signed_duration_since(Local.ymd(year, month, 1))
         .num_days()
 }
+
+/// Wrap an info into JSON representation.
+pub fn to_json(state: String, content: String) -> String {
+    if state == "" {
+        format!(r#"{{"text": "{}"}}"#, content)
+    } else {
+        format!(r#"{{"state":"{}", "text": "{}"}}"#, state, content)
+    }
+}
