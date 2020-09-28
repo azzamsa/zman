@@ -1,4 +1,5 @@
 use chrono::prelude::*;
+use chrono::Duration;
 
 use crate::util::*;
 
@@ -31,6 +32,13 @@ pub fn month_progress_ratio() -> f64 {
         }
     };
     return get_progress(current, start, end);
+}
+
+pub fn week_progress_ratio() -> f64 {
+    let current = Local::today();
+    let start = current - Duration::days(current.weekday().num_days_from_monday().into());
+    let end = start + Duration::days(7);
+    return get_progress(current, start, end)
 }
 
 pub fn show_progress(progress_ratio: f64, width: i32) {

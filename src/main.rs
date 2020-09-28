@@ -47,6 +47,9 @@ fn main() {
     if matches.is_present("month") {
         show_month_progress();
     }
+    if matches.is_present("week") {
+        show_week_progress();
+    }
 }
 
 fn show_year_progress() {
@@ -56,5 +59,10 @@ fn show_year_progress() {
 
 fn show_month_progress() {
     let ratio = progress::month_progress_ratio();
+    progress::show_progress(ratio, 20);
+}
+
+fn show_week_progress() {
+    let ratio = progress::week_progress_ratio();
     progress::show_progress(ratio, 20);
 }
