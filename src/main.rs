@@ -5,7 +5,7 @@ mod util;
 use clap::{crate_version, App, AppSettings, Arg};
 
 fn main() {
-    let matches = App::new("Jaro [A CLI time progress bar]")
+    let matches = App::new("Zman [A CLI time progress bar]")
         .setting(AppSettings::ArgRequiredElseHelp)
         .setting(AppSettings::ColoredHelp)
         .version(crate_version!())
