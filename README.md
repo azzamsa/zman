@@ -1,8 +1,25 @@
-# Zman
+<div align="center">
+<h1>zman</h1>
 
-**zman** is a CLI time progress that small, fast, and just one single binary.
+<a href="https://builds.sr.ht/~azzamsa/zman?">
+<img src="https://builds.sr.ht/~azzamsa/zman.svg">
+</a>
+<a href="https://crates.io/crates/zman">
+<img src="https://img.shields.io/crates/v/zman.svg">
+</a>
+<a href=" https://docs.rs/zman/">
+<img src="https://docs.rs/zman/badge.svg">
+</a>
+<a href="https://azzamsa.com/support/"><img alt="Sponsor me" src="https://img.shields.io/badge/Sponsor%20Me-%F0%9F%92%96-ff69b4"></a>
+<p></p>
 
-![demo](https://git.sr.ht/~azzamsa/zman/blob/master/media/zman-demo.gif)
+![demo](docs/demo.gif)
+
+</div>
+
+---
+
+**zman** is a CLI year (time) progress that small, fast, and just one single binary.
 
 ## Features
 
@@ -11,25 +28,27 @@
 - Show result in JSON format
 - Cross-platform
 
-## Installation
-
-## With cargo (from source)
+## Usage Examples
 
 ``` bash
-$ git clone https://git.sr.ht/~azzamsa/zman
-$ cd zman
-$ cargo build --release
-$ cp target/release/bilal /usr/local/bin/
+zman --year                          Show a year progress bar
+zman --year --json                     ...a year progress bar with JSON format
 ```
 
-## From binaries
+## Installation
 
-Download the binary from the [Release](https://git.sr.ht/~azzamsa/zman.rs/refs/)
+### From binaries
 
-Available binaries:
-- *Nix
-- Window PC
+The [release page](https://git.sr.ht/~azzamsa/zman/refs/) includes
+pre-compiled binaries for GNU/Linux, macOS and Windows.
 
+### From source
+
+Using Rust's package manager [cargo](https://github.com/rust-lang/cargo):
+
+``` bash
+cargo install zman
+```
 
 ## Usage with other tools
 
@@ -47,11 +66,12 @@ on_click = "<command>"
 interval = 300
 json = true
 ```
+
 ## Contributing
 
 For reporting issues, visit the tracker here: https://todo.sr.ht/~azzamsa/Zman
 
-Please send patches to `~azzamsa/zman-devel@lists.sr.ht`
+Please send patches to `~azzamsa/public-inbox@lists.sr.ht`
 
 ### Unsure how to contribute?
 

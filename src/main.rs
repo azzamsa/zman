@@ -29,7 +29,7 @@ fn main() {
         )
         .arg(
             Arg::new("json")
-                .short('j')
+                .short('J')
                 .long("json")
                 .about("Display progress in JSON formatted string"),
         )

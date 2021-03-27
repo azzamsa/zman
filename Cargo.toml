@@ -1,12 +1,26 @@
 [package]
 name = "zman"
+description = "a CLI year progress "
 version = "0.1.2"
 authors = ["azzamsa <me@azzamsa.com>"]
 edition = "2018"
+keywords = ["time", "year", "progress-bar"]
+categories = ["date-and-time", "command-line-utilities"]
+readme = "README.md"
+license = "GPL-3.0-only"
+repository = "https://git.sr.ht/~azzamsa/zman"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.release]
+opt-level = 'z'  # Optimize for size.
+codegen-units = 1
+lto = true
+panic = 'abort'
 
 [dependencies]
 chrono = "0.4.18"
 clap = "3.0.0-beta.2"
 colored = "2.0.0"
+
+[dev-dependencies]
+assert_cmd = "1.0.3"
+predicates = "1.0.7"
