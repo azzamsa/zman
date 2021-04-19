@@ -13,7 +13,8 @@ doitlive play docs/demo.sh
 
 ### Release
 
-After the release has been pushed, run:
+After the release has been pushed, run the code below to produce
+pre-compiled binaries. Then upload them to the release page.
 
 ``` bash
 $ source scripts/relase.sh

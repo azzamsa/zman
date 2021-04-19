@@ -1,6 +1,14 @@
 ## [Unreleased]
 
 
+## [v0.1.3] - 2021-04-20
+
+### Bug Fixes
+- Use time as an argument instead of an option. Now it's `zman year` instead of `zman --year`.
+
+### Bug Fixes
+- Fix wrong name in argument doc
+
 ## [v0.1.2] - 2020-09-29
 
 ### Bug Fixes
