@@ -31,8 +31,27 @@
 ## Usage Examples
 
 ``` bash
-zman --year                          Show a year progress bar
-zman --year --json                     ...a year progress bar with JSON format
+zman                                Show a year progress bar
+zman month                          ... a month progress bar
+zman week                           ... a week progress bar
+zman year --json                    ... a year progress bar with JSON format
+```
+
+## Usage with other tools
+
+You can use Zman with i3status-rs to show salah time in your status bar.
+
+![i3status-zman](docs/i3rs.png)
+
+i3status-rs configuration Example:
+
+``` bash
+[[block]]
+block = "custom"
+cycle = ["zman year -J", "zman month -J"]
+on_click = "<command>"
+interval = 300
+json = true
 ```
 
 ## Installation
@@ -50,21 +69,17 @@ Using Rust's package manager [cargo](https://github.com/rust-lang/cargo):
 cargo install zman
 ```
 
-## Usage with other tools
-
-You can use Zman with i3status-rs to show salah time in your status bar.
-
-![i3status-zman](https://git.sr.ht/~azzamsa/blobs/blob/master/zman/zman.png)
-
-i3status-rs configuration Example:
+## Development
 
 ``` bash
-[[block]]
-block = "custom"
-cycle = ["zman -y -j", "zman -m -j"]
-on_click = "<command>"
-interval = 300
-json = true
+git clone https://git.sr.ht/~azzamsa/zman
+cd zman
+
+# Run unit tests and integration tests
+cargo test
+
+# Install
+cargo install --path .
 ```
 
 ## Contributing

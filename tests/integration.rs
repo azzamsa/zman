@@ -14,13 +14,13 @@ fn help() {
 #[test]
 fn year() {
     let mut cmd = Command::cargo_bin("zman").unwrap();
-    cmd.arg("--year");
+    cmd.arg("year");
     cmd.assert().success().stdout(predicate::str::contains("%"));
 }
 
 #[test]
 fn year_json() {
     let mut cmd = Command::cargo_bin("zman").unwrap();
-    cmd.arg("--year").arg("-J");
+    cmd.arg("year").arg("-J");
     cmd.assert().success().stdout(predicate::str::contains("}"));
 }

@@ -18,20 +18,23 @@ fn run() {
 
     let mut printer = Printer::new(width, full_bar, rest_bar, json_format);
 
-    if matches.is_present("year") {
-        let ratio = progress::year_ratio();
-        printer = printer.ratio(ratio);
-        printer.print();
-    }
-    if matches.is_present("month") {
-        let ratio = progress::month_ratio();
-        printer = printer.ratio(ratio);
-        printer.print();
-    }
-    if matches.is_present("week") {
-        let ratio = progress::week_ratio();
-        printer = printer.ratio(ratio);
-        printer.print();
+    match matches.value_of("time") {
+        Some("year") => {
+            let ratio = progress::year_ratio();
+            printer = printer.ratio(ratio);
+            printer.print();
+        }
+        Some("month") => {
+            let ratio = progress::month_ratio();
+            printer = printer.ratio(ratio);
+            printer.print();
+        }
+        Some("week") => {
+            let ratio = progress::week_ratio();
+            printer = printer.ratio(ratio);
+            printer.print();
+        }
+        Some(&_) | None => (),
     }
 }
 

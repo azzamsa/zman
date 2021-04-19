@@ -7,22 +7,11 @@ pub fn build() -> App<'static> {
         .setting(AppSettings::ColoredHelp)
         .version(crate_version!())
         .arg(
-            Arg::new("year")
-                .short('y')
-                .long("year")
-                .about("Show current year progress"),
-        )
-        .arg(
-            Arg::new("month")
-                .short('m')
-                .long("month")
-                .about("Show current month progress"),
-        )
-        .arg(
-            Arg::new("week")
-                .short('w')
-                .long("week")
-                .about("Show current week progress"),
+            Arg::new("time")
+                .possible_values(&["year", "month", "week"])
+                .default_value("year")
+                .takes_value(true)
+                .about("A time to show"),
         )
         .arg(
             Arg::new("json")
