@@ -41,14 +41,16 @@ pub fn build() -> App<'static> {
             Arg::new("full_bar")
                 .short('f')
                 .long("full-bar")
-                .about("Set full bar string (default: ▓)")
+                .default_value("\u{2593}")
+                .about("Set full bar string")
                 .takes_value(true),
         )
         .arg(
             Arg::new("rest_bar")
                 .short('r')
                 .long("rest-bar")
-                .about("Set rest bar string (default: ░)")
+                .default_value("\u{2591}")
+                .about("Set rest bar string")
                 .takes_value(true),
         );
     app

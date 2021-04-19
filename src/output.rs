@@ -27,7 +27,7 @@ impl Printer {
     /// Show progress-bar
     pub fn print(&self) {
         let ratio_int = (self.ratio * 100.0) as i32;
-        let progress_int = (self.ratio * self.width as f64).round() as i32;
+        let progress_int = (self.ratio * f64::from(self.width)).round() as i32;
         let rest_int = self.width - progress_int;
 
         let mut progress_fmt = format!(
