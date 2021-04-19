@@ -9,6 +9,7 @@ pub fn build() -> App<'static> {
         .arg(
             Arg::new("time")
                 .possible_values(&["year", "month", "week"])
+                .hide_possible_values(true)
                 .default_value("year")
                 .takes_value(true)
                 .about("A time to show"),
