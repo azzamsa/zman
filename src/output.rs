@@ -44,7 +44,7 @@ impl Printer {
             }
         };
         // color
-        if state == "Critical" {
+        if state == "Critical" && !self.json_format {
             progress_fmt = format!("{}", progress_fmt.red());
         }
         // JSON
