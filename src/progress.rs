@@ -1,8 +1,6 @@
 use chrono::prelude::*;
 use chrono::Duration;
-use colored::*;
 
-use crate::config;
 use crate::util;
 
 // Calculate the ratio of time progress
@@ -42,32 +40,4 @@ pub fn week_progress_ratio() -> f64 {
     let start = current - Duration::days(current.weekday().num_days_from_monday().into());
     let end = start + Duration::days(7);
     return get_progress(current, start, end);
-}
-
-pub fn show_progress(progress_ratio: f64, config: config::Config) {
-    let ratio_int = (progress_ratio * 100.0) as i32;
-
-    let progress_int = (progress_ratio * config.width as f64).round() as i32;
-    let rest_int = config.width - progress_int;
-
-    let progress_fmt = format!(
-        "{}{} {}%",
-        config.full_bar.repeat(progress_int as usize),
-        config.rest_bar.repeat(rest_int as usize),
-        ratio_int
-    );
-
-    if config.is_json {
-        if ratio_int > 90 {
-            println!("{}", util::to_json("Critical".to_string(), progress_fmt));
-        } else {
-            println!("{}", util::to_json("".to_string(), progress_fmt));
-        }
-    } else {
-        if ratio_int > 90 {
-            println!("{}", progress_fmt.red());
-        } else {
-            println!("{}", progress_fmt);
-        }
-    }
 }
