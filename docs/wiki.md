@@ -17,11 +17,13 @@ After the release has been pushed, run the code below to produce
 pre-compiled binaries. Then upload them to the release page.
 
 ``` bash
-$ source scripts/relase.sh
+$ rm -rf target
+$ source docs/dev/relase.sh
 ```
 
 or if you use `fish`
 
 ``` fish
-❯ bash -c "source scripts/release.sh"
+❯ rm -rf target
+❯ bash -c "source docs/dev/release.sh"
 ```
