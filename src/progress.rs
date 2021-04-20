@@ -53,11 +53,7 @@ pub fn month_ratio(current: Date<Local>) -> f64 {
     let start = Local.ymd(current.year(), current.month(), 1);
     let end = {
         let days_num = count_days_of_month(current.year(), current.month());
-        if current.month() == 12 {
-            Local.ymd(current.year(), current.month(), days_num as u32)
-        } else {
-            Local.ymd(current.year(), current.month(), days_num as u32)
-        }
+        Local.ymd(current.year(), current.month(), days_num as u32)
     };
     compute(current, start, end)
 }
