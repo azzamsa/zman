@@ -1,9 +1,9 @@
 // `.weekday` needs `Datelike`
 // `.ymd` needs `Timezone`
-pub use chrono::{Date, Datelike, Duration, Local, TimeZone};
+use chrono::{Date, Datelike, Duration, Local, TimeZone};
 
 // Count the amount of days in specified month
-pub fn count_days_of_month(year: i32, month: u32) -> i64 {
+fn count_days_of_month(year: i32, month: u32) -> i64 {
     Local
         .ymd(
             match month {
@@ -39,7 +39,7 @@ pub fn year() -> f64 {
     let current = Local::today();
     year_ratio(current)
 }
-pub fn year_ratio(current: Date<Local>) -> f64 {
+fn year_ratio(current: Date<Local>) -> f64 {
     let start = Local.ymd(current.year(), 1, 1);
     let end = Local.ymd(current.year() + 1, 1, 1);
     compute(current, start, end)
@@ -50,7 +50,7 @@ pub fn month() -> f64 {
     month_ratio(current)
 }
 
-pub fn month_ratio(current: Date<Local>) -> f64 {
+fn month_ratio(current: Date<Local>) -> f64 {
     let start = Local.ymd(current.year(), current.month(), 1);
     let end = {
         let days_num = count_days_of_month(current.year(), current.month());
@@ -64,7 +64,7 @@ pub fn week() -> f64 {
     week_ratio(current)
 }
 
-pub fn week_ratio(current: Date<Local>) -> f64 {
+fn week_ratio(current: Date<Local>) -> f64 {
     let start = current - Duration::days(current.weekday().num_days_from_monday().into());
     let end = start + Duration::days(6);
     compute(current, start, end)
