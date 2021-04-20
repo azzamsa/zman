@@ -48,11 +48,11 @@ pub fn month() -> f64 {
 pub fn month_ratio(current: Date<Local>) -> f64 {
     let start = Local.ymd(current.year(), current.month(), 1);
     let end = {
+        let days_num = count_days_of_month(current.year(), current.month());
         if current.month() == 12 {
-            let days_num = count_days_of_month(current.year(), current.month());
             Local.ymd(current.year(), current.month(), days_num as u32)
         } else {
-            Local.ymd(current.year(), current.month() + 1, 1)
+            Local.ymd(current.year(), current.month(), days_num as u32)
         }
     };
     get(current, start, end)
@@ -65,7 +65,7 @@ pub fn week() -> f64 {
 
 pub fn week_ratio(current: Date<Local>) -> f64 {
     let start = current - Duration::days(current.weekday().num_days_from_monday().into());
-    let end = start + Duration::days(7);
+    let end = start + Duration::days(6);
     get(current, start, end)
 }
 
@@ -115,17 +115,16 @@ mod tests {
         let ratio = month_ratio(current);
         let ratio_int = (ratio * 100.0) as i32;
 
-        assert_eq!(ratio, 0.45161290322580644);
-        assert_eq!(ratio_int, 45);
+        assert_eq!(ratio, 0.4666666666666667);
+        assert_eq!(ratio_int, 46);
 
         // last day of the month
         let current = Local.ymd(2021, 1, 31);
         let ratio = month_ratio(current);
         let ratio_int = (ratio * 100.0) as i32;
 
-        // FIXME can we make it 99?
-        assert_eq!(ratio, 0.967741935483871);
-        assert_eq!(ratio_int, 96);
+        assert_eq!(ratio, 1.0);
+        assert_eq!(ratio_int, 100);
     }
     #[test]
     fn test_week_ratio() {
@@ -142,16 +141,15 @@ mod tests {
         let ratio = week_ratio(current);
         let ratio_int = (ratio * 100.0) as i32;
 
-        assert_eq!(ratio, 0.42857142857142855);
-        assert_eq!(ratio_int, 42);
+        assert_eq!(ratio, 0.5);
+        assert_eq!(ratio_int, 50);
 
         // last day of the week
         let current = Local.ymd(2021, 1, 10);
         let ratio = week_ratio(current);
         let ratio_int = (ratio * 100.0) as i32;
 
-        // FIXME can we make it 99?
-        assert_eq!(ratio, 0.8571428571428571);
-        assert_eq!(ratio_int, 85);
+        assert_eq!(ratio, 1.0);
+        assert_eq!(ratio_int, 100);
     }
 }
