@@ -1,6 +1,16 @@
 ## [Unreleased]
 
 
+## [v1.0.0] - 2021-04-20
+
+All bugs are fixed, and the API is now stabilized. Now `zman` is ready to have a show.
+
+### Features
+- Show a char to distinguish a time in JSON mode. Now a JSON output will be prefixed with `y`, `m`, or `w`. To better distinguish the output.
+
+### Bug Fixes
+- Fixed wrong month and week ratio computation. Now week and month able to reach 100% in the end of time.
+
 ## [v0.1.3] - 2021-04-20
 
 ### Bug Fixes

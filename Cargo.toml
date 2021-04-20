@@ -1,7 +1,7 @@
 [package]
 name = "zman"
 description = "a CLI year progress "
-version = "0.1.3"
+version = "1.0.0"
 authors = ["azzamsa <me@azzamsa.com>"]
 edition = "2018"
 keywords = ["time", "year", "progress-bar"]
