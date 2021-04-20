@@ -59,11 +59,11 @@ OPTIONS:
 
 ### Usage with other tools
 
-You can use Zman with i3status-rs to show salah time in your status bar.
+You can use Zman with i3status-rust to show salah time in your status bar.
 
-![i3status-zman](docs/i3rs.png)
+![i3status-rust-zman](docs/i3status-rust.png)
 
-i3status-rs configuration Example:
+i3status-rust configuration Example:
 
 ``` bash
 [[block]]
@@ -77,7 +77,7 @@ json = true
 See [more examples](examples/) to learn other variations.
 
 If you like `zman` to support your favourite status-bar, please hit me in
-the [mailing-list][mailing-list] with the valid input of your status-bar. In i3status.rs
+the [mailing-list][mailing-list] with the valid input of your status-bar. In i3status-rust
 the valid input it would be `{"icon": "ICON", "state": "STATE", "text": "YOURTEXT"}`.
 
 ## Installation
