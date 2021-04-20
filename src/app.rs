@@ -32,7 +32,7 @@ pub fn build() -> App<'static> {
                 .short('f')
                 .long("full-bar")
                 .default_value("\u{2593}")
-                .about("Set full bar string")
+                .about("Set full bar icon")
                 .takes_value(true),
         )
         .arg(
@@ -40,7 +40,15 @@ pub fn build() -> App<'static> {
                 .short('r')
                 .long("rest-bar")
                 .default_value("\u{2591}")
-                .about("Set rest bar string")
+                .about("Set rest bar icon")
+                .takes_value(true),
+        )
+        .arg(
+            Arg::new("icon")
+                .short('i')
+                .long("icon")
+                .default_value("\u{f678}")
+                .about("Set app icon icon")
                 .takes_value(true),
         );
     app

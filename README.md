@@ -31,13 +31,35 @@
 ## Usage Examples
 
 ``` bash
-zman                                Show a year progress bar
-zman month                          ... a month progress bar
-zman week                           ... a week progress bar
-zman year --json                    ... a year progress bar with JSON format
+zman                                    Show a year progress bar
+zman month                              ... a month progress bar
+zman year --json                        ... a year progress bar with JSON format
+zman year --width 40                    Specify progress bar width
+zman year --full-bar ▮ --rest-bar ▯     Specify full and rest bar icon
 ```
 
-## Usage with other tools
+### Command-line options
+
+``` bash
+USAGE:
+    zman [FLAGS] [OPTIONS] [time]
+
+ARGS:
+    <time>    A time to show [default: year]
+
+FLAGS:
+    -h, --help       Prints help information
+    -J, --json       Display progress in JSON formatted string
+    -V, --version    Prints version information
+
+OPTIONS:
+    -f, --full-bar <full_bar>    Set full bar icon [default: ▓]
+    -i, --icon <icon>            Set app icon icon [default: ]
+    -r, --rest-bar <rest_bar>    Set rest bar icon [default: ░]
+    -d, --width <width>          Adjust width of the bar (default: 20)
+```
+
+### Usage with other tools
 
 You can use Zman with i3status-rs to show salah time in your status bar.
 
@@ -53,6 +75,8 @@ on_click = "<command>"
 interval = 300
 json = true
 ```
+
+See [more examples](examples/) to learn other variations.
 
 ## Installation
 

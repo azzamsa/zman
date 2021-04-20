@@ -15,8 +15,10 @@ fn run() {
     // safe to use unwrap() here. there must be default value
     let full_bar = matches.value_of("full_bar").unwrap();
     let rest_bar = matches.value_of("rest_bar").unwrap();
+    let app_icon = matches.value_of("icon").unwrap();
 
     let mut printer = Printer::new(width, full_bar, rest_bar, json_format);
+    printer = printer.icon(app_icon);
 
     match matches.value_of("time") {
         Some("year") => {
