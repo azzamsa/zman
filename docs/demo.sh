@@ -1,8 +1,6 @@
 #doitlive prompt: >
 #doitlive shell: /bin/fish
 #doitlive speed: 3
-zman --help
-clear
 zman
 zman month
 zman week
