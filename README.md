@@ -57,8 +57,6 @@ OPTIONS:
     -d, --width <width>          Adjust width of the bar (default: 20)
 ```
 
-See [more examples](examples/) to learn other variations.
-
 ### Usage with other tools
 
 You can use Zman with i3status-rs to show salah time in your status bar.
@@ -75,6 +73,8 @@ on_click = "<command>"
 interval = 300
 json = true
 ```
+
+See [more examples](examples/) to learn other variations.
 
 If you like `zman` to support your favourite status-bar, please hit me in
 the [mailing-list][mailing-list] with the valid input of your status-bar. In i3status.rs
