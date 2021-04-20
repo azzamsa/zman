@@ -1,0 +1,31 @@
+# tested against
+# i3status-rs 0.14.3 (commit b98c99e 2020-12-10)
+
+[icons]
+name = "awesome5"
+[icons.overrides]
+zman = "  "
+
+## variant 1
+[[block]]
+block = "custom"
+cycle = [
+       ''' echo "y:" (zman year)  ''',
+       ''' echo "m:" (zman month)  ''',
+       ''' echo "w:" (zman week)  '''
+       ]
+on_click = "<command>"
+interval = 300
+
+## variant 2
+[[block]]
+block = "custom"
+cycle = [
+        ''' echo '{"icon":"pray", "state":"Info", "text": "'y: (zman year)'"}' ''',
+        ''' echo '{"icon":"pray", "state":"Info", "text": "'m: (zman month)'"}' ''',
+        ''' echo '{"icon":"pray", "state":"Info", "text": "'w: (zman week)'"}' '''
+        ]
+on_click = "<command>"
+interval = 300
+json = true
+
