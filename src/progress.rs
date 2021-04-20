@@ -20,12 +20,16 @@ pub fn count_days_of_month(year: i32, month: u32) -> i64 {
 }
 
 // Calculate the ratio of time progress
-fn get(current: Date<Local>, start: Date<Local>, end: Date<Local>) -> f64 {
+fn compute(current: Date<Local>, start: Date<Local>, end: Date<Local>) -> f64 {
     let whole_diff = end - start;
-    let whole_diff_in_seconds = whole_diff.num_days() * 86400 + whole_diff.num_seconds();
+    // 86_400 is total second in a day (24 * 3600)
+    let total_seconds_in_day = 84_000;
+    let whole_diff_in_seconds =
+        whole_diff.num_days() * total_seconds_in_day + whole_diff.num_seconds();
 
     let current_diff = current - start;
-    let current_diff_in_seconds = current_diff.num_days() * 86400 + current_diff.num_seconds();
+    let current_diff_in_seconds =
+        current_diff.num_days() * total_seconds_in_day + current_diff.num_seconds();
     // progress_ratio
     current_diff_in_seconds as f64 / whole_diff_in_seconds as f64
 }
@@ -37,7 +41,7 @@ pub fn year() -> f64 {
 pub fn year_ratio(current: Date<Local>) -> f64 {
     let start = Local.ymd(current.year(), 1, 1);
     let end = Local.ymd(current.year() + 1, 1, 1);
-    get(current, start, end)
+    compute(current, start, end)
 }
 
 pub fn month() -> f64 {
@@ -55,7 +59,7 @@ pub fn month_ratio(current: Date<Local>) -> f64 {
             Local.ymd(current.year(), current.month(), days_num as u32)
         }
     };
-    get(current, start, end)
+    compute(current, start, end)
 }
 
 pub fn week() -> f64 {
@@ -66,7 +70,7 @@ pub fn week() -> f64 {
 pub fn week_ratio(current: Date<Local>) -> f64 {
     let start = current - Duration::days(current.weekday().num_days_from_monday().into());
     let end = start + Duration::days(6);
-    get(current, start, end)
+    compute(current, start, end)
 }
 
 #[cfg(test)]
