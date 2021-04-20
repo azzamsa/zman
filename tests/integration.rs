@@ -44,13 +44,3 @@ fn rest_bar() {
         .success()
         .stdout(predicate::str::contains("\u{25af}"));
 }
-
-#[test]
-fn icon() {
-    let mut cmd = Command::cargo_bin("zman").unwrap();
-    cmd.arg("year").arg("--icon").arg("").arg("-J");
-    //  \u{f678} is 
-    cmd.assert()
-        .success()
-        .stdout(predicate::str::contains("\u{f678}"));
-}

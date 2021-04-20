@@ -10,7 +10,6 @@ pub struct Printer {
     json_format: bool,
     /// only used in status bar
     ratio_char: String,
-    icon: String,
 }
 
 impl Printer {
@@ -22,7 +21,6 @@ impl Printer {
             rest_bar: rest_bar.to_string(),
             json_format,
             ratio_char: "y".to_string(),
-            icon: "".to_string(),
         }
     }
     pub fn ratio(mut self, ratio: f64) -> Self {
@@ -31,10 +29,6 @@ impl Printer {
     }
     pub fn ratio_char(mut self, ratio_char: &str) -> Self {
         self.ratio_char = ratio_char.to_string();
-        self
-    }
-    pub fn icon(mut self, icon: &str) -> Self {
-        self.icon = icon.to_string();
         self
     }
     /// Show progress-bar
@@ -63,8 +57,8 @@ impl Printer {
         // JSON
         if self.json_format {
             progress_fmt = format!(
-                r#"{{"icon": "{} ", "state": "{}", "text": "{}: {}"}}"#,
-                self.icon, state, self.ratio_char, progress_fmt
+                r#"{{"icon": "{}", "state": "{}", "text": "{}: {}"}}"#,
+                "zman", state, self.ratio_char, progress_fmt
             );
         }
         writeln!(io::stdout(), "{}", progress_fmt).ok();
