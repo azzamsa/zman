@@ -24,3 +24,33 @@ fn year_json() {
     cmd.arg("year").arg("-J");
     cmd.assert().success().stdout(predicate::str::contains("}"));
 }
+
+#[test]
+fn full_bar() {
+    let mut cmd = Command::cargo_bin("zman").unwrap();
+    cmd.arg("year").arg("--full-bar").arg("▮");
+    // \u{25ae} is ▮
+    cmd.assert()
+        .success()
+        .stdout(predicate::str::contains("\u{25ae}"));
+}
+
+#[test]
+fn rest_bar() {
+    let mut cmd = Command::cargo_bin("zman").unwrap();
+    cmd.arg("year").arg("--rest-bar").arg("▯");
+    // \u{25ae} is ▯
+    cmd.assert()
+        .success()
+        .stdout(predicate::str::contains("\u{25af}"));
+}
+
+#[test]
+fn icon() {
+    let mut cmd = Command::cargo_bin("zman").unwrap();
+    cmd.arg("year").arg("--icon").arg("").arg("-J");
+    //  \u{f678} is 
+    cmd.assert()
+        .success()
+        .stdout(predicate::str::contains("\u{f678}"));
+}
