@@ -1,5 +1,6 @@
-use chrono::prelude::*;
-use chrono::Duration;
+// `.weekday` needs `Datelike`
+// `.ymd` needs `Timezone`
+pub use chrono::{Date, Datelike, Duration, Local, TimeZone};
 
 // Count the amount of days in specified month
 pub fn count_days_of_month(year: i32, month: u32) -> i64 {
