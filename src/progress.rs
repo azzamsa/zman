@@ -78,7 +78,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_year_ratio() {
+    fn year_should_be_0() {
         // first day of the year
         let current = Local.ymd(2021, 1, 1);
         let ratio = year_ratio(current);
@@ -87,14 +87,50 @@ mod tests {
         assert_eq!(ratio, 0.0);
         assert_eq!(ratio_int, 0);
 
+        // first day of the year
+        let current = Local.ymd(2022, 1, 1);
+        let ratio = year_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.0);
+        assert_eq!(ratio_int, 0);
+
+        // first day of the year
+        let current = Local.ymd(2023, 1, 1);
+        let ratio = year_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.0);
+        assert_eq!(ratio_int, 0);
+    }
+    #[test]
+    fn year_should_be_50() {
         // middle day of the year
-        let current = Local.ymd(2021, 7, 3);
+        let current = Local.ymd(2021, 7, 4);
+        let ratio = year_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.5041095890410959);
+        assert_eq!(ratio_int, 50);
+
+        // middle day of the year
+        let current = Local.ymd(2022, 7, 3);
         let ratio = year_ratio(current);
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 0.5013698630136987);
         assert_eq!(ratio_int, 50);
 
+        // middle day of the year
+        let current = Local.ymd(2023, 7, 3);
+        let ratio = year_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.5013698630136987);
+        assert_eq!(ratio_int, 50);
+    }
+    #[test]
+    fn year_should_be_100() {
         // last day of the year
         let current = Local.ymd(2021, 12, 31);
         let ratio = year_ratio(current);
@@ -102,10 +138,25 @@ mod tests {
 
         assert_eq!(ratio, 0.9972602739726028);
         assert_eq!(ratio_int, 99);
-    }
 
+        // last day of the year
+        let current = Local.ymd(2023, 12, 31);
+        let ratio = year_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.9972602739726028);
+        assert_eq!(ratio_int, 99);
+
+        // last day of the year
+        let current = Local.ymd(2023, 12, 31);
+        let ratio = year_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.9972602739726028);
+        assert_eq!(ratio_int, 99);
+    }
     #[test]
-    fn test_month_ratio() {
+    fn month_should_be_0() {
         // first day of the month
         let current = Local.ymd(2021, 1, 1);
         let ratio = month_ratio(current);
@@ -114,14 +165,51 @@ mod tests {
         assert_eq!(ratio, 0.0);
         assert_eq!(ratio_int, 0);
 
-        // middle day of the month
-        let current = Local.ymd(2021, 1, 15);
+        // first day of the month
+        let current = Local.ymd(2021, 2, 1);
         let ratio = month_ratio(current);
         let ratio_int = (ratio * 100.0) as i32;
 
-        assert_eq!(ratio, 0.4666666666666667);
-        assert_eq!(ratio_int, 46);
+        assert_eq!(ratio, 0.0);
+        assert_eq!(ratio_int, 0);
 
+        // first day of the month
+        let current = Local.ymd(2020, 1, 1);
+        let ratio = month_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.0);
+        assert_eq!(ratio_int, 0);
+    }
+    #[test]
+    fn month_should_be_50() {
+        // middle day of the month
+        let current = Local.ymd(2021, 1, 16);
+        let ratio = month_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.5);
+        assert_eq!(ratio_int, 50);
+
+        // middle day of the month
+        let current = Local.ymd(2021, 2, 15);
+        let ratio = month_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        // it's okay for february.
+        assert_eq!(ratio, 0.5185185185185185);
+        assert_eq!(ratio_int, 51);
+
+        // middle of the month
+        let current = Local.ymd(2021, 3, 16);
+        let ratio = month_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.5);
+        assert_eq!(ratio_int, 50);
+    }
+    #[test]
+    fn month_should_be_100() {
         // last day of the month
         let current = Local.ymd(2021, 1, 31);
         let ratio = month_ratio(current);
@@ -129,17 +217,48 @@ mod tests {
 
         assert_eq!(ratio, 1.0);
         assert_eq!(ratio_int, 100);
+
+        // last day of the month
+        let current = Local.ymd(2021, 2, 28);
+        let ratio = month_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 1.0);
+        assert_eq!(ratio_int, 100);
+
+        // last day of the month
+        let current = Local.ymd(2020, 1, 31);
+        let ratio = month_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 1.0);
+        assert_eq!(ratio_int, 100);
     }
     #[test]
-    fn test_week_ratio() {
+    fn week_should_be_0() {
         // first day of the week
         let current = Local.ymd(2021, 1, 4);
         let ratio = week_ratio(current);
         let ratio_int = (ratio * 100.0) as i32;
-
         assert_eq!(ratio, 0.0);
         assert_eq!(ratio_int, 0);
 
+        // first day of the week
+        let current = Local.ymd(2021, 1, 11);
+        let ratio = week_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+        assert_eq!(ratio, 0.0);
+        assert_eq!(ratio_int, 0);
+
+        // first day of the week
+        let current = Local.ymd(2020, 1, 6);
+        let ratio = week_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+        assert_eq!(ratio, 0.0);
+        assert_eq!(ratio_int, 0);
+    }
+    #[test]
+    fn week_should_be_50() {
         // middle day of the week
         let current = Local.ymd(2021, 1, 7);
         let ratio = week_ratio(current);
@@ -148,8 +267,42 @@ mod tests {
         assert_eq!(ratio, 0.5);
         assert_eq!(ratio_int, 50);
 
+        // middle day of the week
+        let current = Local.ymd(2021, 1, 14);
+        let ratio = week_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.5);
+        assert_eq!(ratio_int, 50);
+
+        // middle day of the week
+        let current = Local.ymd(2020, 1, 9);
+        let ratio = week_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 0.5);
+        assert_eq!(ratio_int, 50);
+    }
+    #[test]
+    fn week_should_be_100() {
         // last day of the week
         let current = Local.ymd(2021, 1, 10);
+        let ratio = week_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 1.0);
+        assert_eq!(ratio_int, 100);
+
+        // last day of the week
+        let current = Local.ymd(2021, 1, 17);
+        let ratio = week_ratio(current);
+        let ratio_int = (ratio * 100.0) as i32;
+
+        assert_eq!(ratio, 1.0);
+        assert_eq!(ratio_int, 100);
+
+        // last day of the week
+        let current = Local.ymd(2020, 1, 12);
         let ratio = week_ratio(current);
         let ratio_int = (ratio * 100.0) as i32;
 
