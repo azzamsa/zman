@@ -22,12 +22,12 @@ fn run() {
 
     match matches.value_of("time") {
         Some("year") => {
-            let ratio = progress::year_ratio();
+            let ratio = progress::year();
             printer = printer.ratio(ratio).ratio_char("y");
             printer.print();
         }
         Some("month") => {
-            let ratio = progress::month_ratio();
+            let ratio = progress::month();
             printer = printer.ratio(ratio).ratio_char("m");
             printer.print();
         }
