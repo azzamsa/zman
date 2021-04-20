@@ -37,7 +37,29 @@ zman week                           ... a week progress bar
 zman year --json                    ... a year progress bar with JSON format
 ```
 
-## Usage with other tools
+### Command-line options
+
+``` bash
+USAGE:
+    zman [FLAGS] [OPTIONS] [time]
+
+ARGS:
+    <time>    A time to show [default: year]
+
+FLAGS:
+    -h, --help       Prints help information
+    -J, --json       Display progress in JSON formatted string
+    -V, --version    Prints version information
+
+OPTIONS:
+    -f, --full-bar <full_bar>    Set full bar icon [default: ▓]
+    -r, --rest-bar <rest_bar>    Set rest bar icon [default: ░]
+    -d, --width <width>          Adjust width of the bar (default: 20)
+```
+
+See [more examples](examples/) to learn other variations.
+
+### Usage with other tools
 
 You can use Zman with i3status-rs to show salah time in your status bar.
 
@@ -53,6 +75,10 @@ on_click = "<command>"
 interval = 300
 json = true
 ```
+
+If you like `zman` to support your favourite status-bar, please hit me in
+the [mailing-list][mailing-list] with the valid input of your status-bar. In i3status.rs
+the valid input it would be `{"icon": "ICON", "state": "STATE", "text": "YOURTEXT"}`.
 
 ## Installation
 
@@ -109,3 +135,4 @@ Copyright (c) 2020 Azzamsa
 Bilal is distributed under the terms of [GPL V3 License](LICENSE).
 
 
+[mailing-list]: https://lists.sr.ht/~azzamsa/public-inbox
