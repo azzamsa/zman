@@ -114,9 +114,7 @@ For reporting issues, visit the tracker here: https://todo.sr.ht/~azzamsa/Zman
 
 Please send patches to `~azzamsa/public-inbox@lists.sr.ht`
 
-### Unsure how to contribute?
-
-- [How to send patches](https://git-send-email.io/#step-3)
+To learn more read [contributing.md](docs/dev/contributing.md)
 
 ## Origin of the name
 
