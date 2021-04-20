@@ -22,7 +22,7 @@ impl Printer {
             rest_bar: rest_bar.to_string(),
             json_format,
             ratio_char: "y".to_string(),
-            icon: "\u{f678}".to_string(),
+            icon: "".to_string(),
         }
     }
     pub fn ratio(mut self, ratio: f64) -> Self {
@@ -63,7 +63,7 @@ impl Printer {
         // JSON
         if self.json_format {
             progress_fmt = format!(
-                r#"{{"icon": "{}", "state": "{}", "text": "{}: {}"}}"#,
+                r#"{{"icon": "{} ", "state": "{}", "text": "{}: {}"}}"#,
                 self.icon, state, self.ratio_char, progress_fmt
             );
         }
