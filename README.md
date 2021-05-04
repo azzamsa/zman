@@ -110,9 +110,9 @@ cargo install --path .
 
 ## Contributing
 
-For reporting issues, visit the tracker here: https://todo.sr.ht/~azzamsa/Zman
+Please send patches and questions to my [public-inbox][mailing-list] mailing list.
 
-Please send patches to `~azzamsa/public-inbox@lists.sr.ht`
+Bugs and Todo here: https://todo.sr.ht/~azzamsa/Zman
 
 To learn more read [contributing.md](docs/dev/contributing.md)
 
@@ -130,7 +130,6 @@ Please check out this previous work that helped inspire the creation of zman.
 
 Copyright (c) 2020 Azzamsa
 
-Bilal is distributed under the terms of [GPL V3 License](LICENSE).
-
+Zman is distributed under the terms of [GPL V3 License](LICENSE).
 
 [mailing-list]: https://lists.sr.ht/~azzamsa/public-inbox
