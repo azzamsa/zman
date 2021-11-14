@@ -1,8 +1,8 @@
 <div align="center">
 <h1>zman</h1>
 
-<a href="https://builds.sr.ht/~azzamsa/zman?">
-<img src="https://builds.sr.ht/~azzamsa/zman.svg">
+<a href="https://github.com/azzamsa/zman/workflows/ci.yml">
+<img src="https://github.com/azzamsa/zman/workflows/ci/badge.svg">
 </a>
 <a href="https://crates.io/crates/zman">
 <img src="https://img.shields.io/crates/v/zman.svg">
@@ -110,10 +110,6 @@ cargo install --path .
 
 ## Contributing
 
-Please send patches and questions to my [public-inbox][mailing-list] mailing list.
-
-Bugs and Todo here: https://todo.sr.ht/~azzamsa/Zman
-
 To learn more read [contributing.md](docs/dev/contributing.md)
 
 ## Origin of the name
@@ -131,5 +127,3 @@ Please check out this previous work that helped inspire the creation of zman.
 Copyright (c) 2020 Azzamsa
 
 Zman is distributed under the terms of [GPL V3 License](LICENSE).
-
-[mailing-list]: https://lists.sr.ht/~azzamsa/public-inbox
