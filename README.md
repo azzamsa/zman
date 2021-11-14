@@ -76,15 +76,15 @@ json = true
 
 See [more examples](examples/) to learn other variations.
 
-If you like `zman` to support your favourite status-bar, please hit me in
-the [mailing-list][mailing-list] with the valid input of your status-bar. In i3status-rust
+If you like `zman` to support your favourite status-bar, please open the issue
+with the valid input of your status-bar. In i3status-rust
 the valid input it would be `{"icon": "ICON", "state": "STATE", "text": "YOURTEXT"}`.
 
 ## Installation
 
 ### From binaries
 
-The [release page](https://git.sr.ht/~azzamsa/zman/refs/) includes
+The [release page](https://github.com/azzamsa/zman/releases) includes
 pre-compiled binaries for GNU/Linux, macOS and Windows.
 
 ### From source
@@ -98,7 +98,7 @@ cargo install zman
 ## Development
 
 ``` bash
-git clone https://git.sr.ht/~azzamsa/zman
+git clone https://github.com/azzamsa/zman
 cd zman
 
 # Run unit tests and integration tests
