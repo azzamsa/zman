@@ -1,7 +1,7 @@
 ## [Unreleased]
 
 
-## [v1.0.1] - 2021-11-14
+## [v1.0.3] - 2021-11-14
 
 - Migrate to GitHub
 
