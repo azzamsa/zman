@@ -3,7 +3,7 @@
 - Run linting:
 
 ``` bash
-$ find . | grep "\.rs" | xargs touch ; cargo clippy --all-features -- --deny warnings --deny clippy::pedantic --deny clippy::nursery
+cargo clippy --all-features -- --deny warnings --deny clippy::pedantic --deny clippy::nursery
 ```
 
 - Run `cargo update` and review dependency updates.
