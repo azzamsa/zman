@@ -1,9 +1,13 @@
 ## [Unreleased]
 
 
+## [v1.0.1] - 2021-11-14
+
+- Migrate to GitHub
+
 ## [v1.0.0] - 2021-04-20
 
-All bugs are fixed, and the API is now stabilized. Now `zman` is ready to have a show.
+- All bugs are fixed, and the API is now stabilized. Now `zman` is ready to have a show.
 
 ### Features
 - Show a char to distinguish a time in JSON mode. Now a JSON output will be prefixed with `y`, `m`, or `w`. To better distinguish the output.

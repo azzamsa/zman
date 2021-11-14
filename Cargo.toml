@@ -1,14 +1,14 @@
 [package]
 name = "zman"
 description = "a CLI year progress "
-version = "1.0.0"
+version = "1.0.1"
 authors = ["azzamsa <me@azzamsa.com>"]
 edition = "2018"
 keywords = ["time", "year", "progress-bar"]
 categories = ["date-and-time", "command-line-utilities"]
 readme = "README.md"
 license = "GPL-3.0-only"
-repository = "https://git.sr.ht/~azzamsa/zman"
+repository = "https://github/azzamsa/zman"
 
 [profile.release]
 opt-level = 'z'  # Optimize for size.
