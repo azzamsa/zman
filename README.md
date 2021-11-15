@@ -114,7 +114,7 @@ To learn more read [contributing.md](docs/dev/contributing.md)
 
 ## Origin of the name
 
-Zman is a 'time' in Arabic/Turksih.
+Zman is 'time' in Arabic, Turkish and Hebrew.
 
 ## Inspired By
 
