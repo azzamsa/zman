@@ -11,7 +11,8 @@ fi
 # takes the tag as an argument (e.g. v0.1.0)
 if [ -n "$1" ]; then
     # update the version
-    sed "s/^version = .* $/version = \"${1#v}\" /" --in-place Cargo.toml
+    new_version=${1#v} # strip the `v` prefix
+    sed --in-place "0,/^version = .*/s//version = \"$new_version\"/" Cargo.toml
 
     # update Cargo.lock
     cargo update -p zman
