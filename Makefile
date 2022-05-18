@@ -25,3 +25,7 @@ check: fmt_check lint test ## Check if the repository comply with the rules and 
 
 release:  ## Create a release
 	bash scripts/release.sh $(version)
+
+update_dependencies:
+	cargo update
+	cargo outdated --root-deps-only
