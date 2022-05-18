@@ -8,7 +8,7 @@ keywords = ["time", "year", "progress-bar"]
 categories = ["date-and-time", "command-line-utilities"]
 readme = "README.md"
 license = "GPL-3.0-only"
-repository = "https://github/azzamsa/zman"
+repository = "https://github.com/azzamsa/zman"
 
 [profile.release]
 opt-level = 'z'  # Optimize for size.
