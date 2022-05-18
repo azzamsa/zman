@@ -22,3 +22,6 @@ test:
 comply: fmt lint test ## Tasks to make the code-base comply with the rules. Mostly used in git hooks.
 
 check: sort_check fmt_check lint test ## Check if the repository comply with the rules and ready to be pushed.
+
+release:  ## Create a release
+	bash scripts/release.sh $(version)
