@@ -1,24 +1,24 @@
 [package]
 name = "zman"
-description = "a CLI year progress "
 version = "1.0.6"
 authors = ["azzamsa <me@azzamsa.com>"]
+categories = ["date-and-time", "command-line-utilities"]
 edition = "2018"
 keywords = ["time", "year", "progress-bar"]
-categories = ["date-and-time", "command-line-utilities"]
-readme = "README.md"
 license = "GPL-3.0-only"
+readme = "README.md"
 repository = "https://github.com/azzamsa/zman"
+description = "a CLI year progress "
 
 [profile.release]
-opt-level = 'z'  # Optimize for size.
+opt-level = 'z' # Optimize for size.
 codegen-units = 1
 lto = true
 panic = 'abort'
 
 [dependencies]
-clap = { version = "3.1.18", features = ["suggestions", "cargo"] }
 chrono = "0.4.18"
+clap = { version = "3.1.18", features = ["suggestions", "cargo"] }
 colored = "2.0.0"
 
 [dev-dependencies]

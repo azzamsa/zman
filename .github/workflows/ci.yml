@@ -22,6 +22,11 @@ jobs:
       - name: Install latest just release
         uses: extractions/setup-just@v1
 
+      - name: Install latest dprint release
+        uses: taiki-e/install-action@v1
+        with:
+          tool: dprint
+
       - name: Cache
         uses: Swatinem/rust-cache@v2
 

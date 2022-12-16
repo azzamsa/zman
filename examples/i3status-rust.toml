@@ -9,10 +9,10 @@ zman = "  "
 [[block]]
 block = "custom"
 cycle = [
-        "zman year -J",
-        "zman month -J",
-        "zman week -J",
-        ]
+  "zman year -J",
+  "zman month -J",
+  "zman week -J",
+]
 on_click = "<command>"
 interval = 300
 json = true

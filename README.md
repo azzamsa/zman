@@ -30,7 +30,7 @@
 
 ## Usage Examples
 
-``` bash
+```bash
 zman                                Show a year progress bar
 zman month                          ... a month progress bar
 zman week                           ... a week progress bar
@@ -39,7 +39,7 @@ zman year --json                    ... a year progress bar with JSON format
 
 ### Command-line options
 
-``` bash
+```bash
 USAGE:
     zman [FLAGS] [OPTIONS] [time]
 
@@ -65,7 +65,7 @@ You can use Zman with i3status-rust to show salah time in your status bar.
 
 i3status-rust configuration Example:
 
-``` bash
+```bash
 [[block]]
 block = "custom"
 cycle = ["zman year -J", "zman month -J"]
@@ -91,13 +91,13 @@ pre-compiled binaries for GNU/Linux, macOS and Windows.
 
 Using Rust's package manager [cargo](https://github.com/rust-lang/cargo):
 
-``` bash
+```bash
 cargo install zman
 ```
 
 ## Development
 
-``` bash
+```bash
 git clone https://github.com/azzamsa/zman
 cd zman
 

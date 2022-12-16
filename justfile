@@ -15,6 +15,7 @@ setup:
     cargo nextest --version || cargo install --locked cargo-nextest
     cargo-set-version --help || cargo install --locked cargo-edit
     cargo watch --version || cargo install --locked cargo-watch
+    dprint --version || cargo install --locked dprint
 
 # Develop the app.
 dev:
@@ -23,10 +24,12 @@ dev:
 # Format the codebase.
 fmt:
     cargo fmt --all
+    dprint fmt --config configs/dprint.json
 
 # Check is the codebase properly formatted.
 fmt-check:
     cargo fmt --all -- --check
+    dprint check --config configs/dprint.json
 
 # Lint the docstring.
 _lint_doc:
