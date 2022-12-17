@@ -1,40 +1,37 @@
-use std::env;
+use clap::Parser;
 
-use zman::app;
+use zman::cli::Opts;
+use zman::cli::Time;
 use zman::output::Printer;
 use zman::progress;
 
 fn run() {
-    let matches = app::build().get_matches_from(env::args_os());
+    let opts = Opts::parse();
 
-    let width = match matches.value_of("width") {
-        None => 20,
-        Some(num) => num.parse::<i32>().unwrap_or(20),
-    };
-    let json_format = matches.is_present("json");
+    let width = opts.width;
+    let json_format = opts.json;
     // safe to use unwrap() here. there must be default value
-    let full_bar = matches.value_of("full_bar").unwrap();
-    let rest_bar = matches.value_of("rest_bar").unwrap();
+    let full_bar = opts.full_bar;
+    let rest_bar = opts.rest_bar;
 
-    let mut printer = Printer::new(width, full_bar, rest_bar, json_format);
+    let mut printer = Printer::new(width, &full_bar, &rest_bar, json_format);
 
-    match matches.value_of("time") {
-        Some("year") => {
+    match opts.time {
+        Time::Year => {
             let ratio = progress::year();
             printer = printer.ratio(ratio).ratio_char("y");
             printer.print();
         }
-        Some("month") => {
+        Time::Month => {
             let ratio = progress::month();
             printer = printer.ratio(ratio).ratio_char("m");
             printer.print();
         }
-        Some("week") => {
+        Time::Week => {
             let ratio = progress::week();
             printer = printer.ratio(ratio).ratio_char("w");
             printer.print();
         }
-        Some(&_) | None => (),
     }
 }
 

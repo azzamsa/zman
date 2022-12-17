@@ -18,9 +18,12 @@ panic = 'abort'
 
 [dependencies]
 chrono = "0.4.18"
-clap = { version = "3.1.18", features = ["suggestions", "cargo"] }
 colored = "2.0.0"
 
+[dependencies.clap]
+version = "4.0.29"
+features = ["suggestions", "color", "cargo", "derive"]
+
 [dev-dependencies]
-assert_cmd = "2.0.4"
-predicates = "2.1.1"
+assert_cmd = "2.0.7"
+predicates = "2.1.4"
