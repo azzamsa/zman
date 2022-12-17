@@ -8,14 +8,7 @@ use zman::progress;
 fn run() {
     let opts = Opts::parse();
 
-    let width = opts.width;
-    let json_format = opts.json;
-    // safe to use unwrap() here. there must be default value
-    let full_bar = opts.full_bar;
-    let rest_bar = opts.rest_bar;
-
-    let mut printer = Printer::new(width, &full_bar, &rest_bar, json_format);
-
+    let mut printer = Printer::new(opts.width, &opts.full_bar, &opts.rest_bar, opts.json);
     match opts.time {
         Time::Year => {
             let ratio = progress::year();
