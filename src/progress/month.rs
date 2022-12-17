@@ -1,15 +1,16 @@
+use anyhow::Result;
 use time::{Date, Month};
 
 use super::{compute, today};
 
-pub fn month() -> f64 {
-    month_ratio(today())
+pub fn month() -> Result<f64> {
+    month_ratio(today()?)
 }
 
-fn month_ratio(today: Date) -> f64 {
-    let start = Date::from_calendar_date(today.year(), today.month(), 1).unwrap();
+fn month_ratio(today: Date) -> Result<f64> {
+    let start = Date::from_calendar_date(today.year(), today.month(), 1)?;
     let end_date = end_date_in_current_month(today);
-    let end = Date::from_calendar_date(today.year(), today.month(), end_date as u8).unwrap();
+    let end = Date::from_calendar_date(today.year(), today.month(), end_date as u8)?;
     compute(today, start, end)
 }
 
@@ -39,10 +40,10 @@ mod tests {
     use time::macros::date;
 
     #[test]
-    fn month_should_be_0() {
+    fn month_should_be_0() -> Result<()> {
         // first day of the month
         let current = date!(2021 - 1 - 1);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 0.0);
@@ -50,7 +51,7 @@ mod tests {
 
         // first day of the month
         let current = date!(2021 - 2 - 1);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 0.0);
@@ -58,17 +59,19 @@ mod tests {
 
         // first day of the month
         let current = date!(2020 - 1 - 1);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 0.0);
         assert_eq!(ratio_int, 0);
+
+        Ok(())
     }
     #[test]
-    fn month_should_be_50() {
+    fn month_should_be_50() -> Result<()> {
         // middle day of the month
         let current = date!(2021 - 1 - 16);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 0.5);
@@ -76,7 +79,7 @@ mod tests {
 
         // middle day of the month
         let current = date!(2021 - 2 - 15);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         // it's okay for february.
@@ -85,17 +88,19 @@ mod tests {
 
         // middle of the month
         let current = date!(2021 - 3 - 16);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 0.5);
         assert_eq!(ratio_int, 50);
+
+        Ok(())
     }
     #[test]
-    fn month_should_be_100() {
+    fn month_should_be_100() -> Result<()> {
         // last day of the month
         let current = date!(2021 - 1 - 31);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 1.0);
@@ -103,7 +108,7 @@ mod tests {
 
         // last day of the month
         let current = date!(2021 - 2 - 28);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 1.0);
@@ -111,10 +116,12 @@ mod tests {
 
         // last day of the month
         let current = date!(2020 - 1 - 31);
-        let ratio = month_ratio(current);
+        let ratio = month_ratio(current)?;
         let ratio_int = (ratio * 100.0) as i32;
 
         assert_eq!(ratio, 1.0);
         assert_eq!(ratio_int, 100);
+
+        Ok(())
     }
 }

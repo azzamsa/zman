@@ -1,33 +1,41 @@
 use clap::Parser;
+use std::process;
 
-use zman::cli::Opts;
-use zman::cli::Time;
-use zman::output::Printer;
-use zman::progress;
+use anyhow::Result;
+use zman::{
+    cli::{Opts, Time},
+    output::Printer,
+    progress,
+};
 
-fn run() {
+fn run() -> Result<()> {
     let opts = Opts::parse();
 
     let mut printer = Printer::new(opts.width, &opts.full_bar, &opts.rest_bar, opts.json);
     match opts.time {
         Time::Year => {
-            let ratio = progress::year();
+            let ratio = progress::year()?;
             printer = printer.ratio(ratio).ratio_char("y");
             printer.print();
         }
         Time::Month => {
-            let ratio = progress::month();
+            let ratio = progress::month()?;
             printer = printer.ratio(ratio).ratio_char("m");
             printer.print();
         }
         Time::Week => {
-            let ratio = progress::week();
+            let ratio = progress::week()?;
             printer = printer.ratio(ratio).ratio_char("w");
             printer.print();
         }
     }
+
+    Ok(())
 }
 
 fn main() {
-    run();
+    if let Err(err) = run() {
+        eprintln!("Error: {:?}", err);
+        process::exit(1);
+    }
 }

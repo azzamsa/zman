@@ -17,6 +17,7 @@ lto = true
 panic = 'abort'
 
 [dependencies]
+anyhow = "1.0"
 colored = "2.0.0"
 
 [dependencies.clap]
