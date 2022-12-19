@@ -1,9 +1,9 @@
-name: release
+name: Release
 
 on:
   push:
     tags:
-    - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v*'
 
 jobs:
   publish:
@@ -23,18 +23,19 @@ jobs:
         build: [linux, linux-musl, macos, win-msvc, win-gnu]
         include:
         - build: linux
-          os: ubuntu-18.04
+          os: ubuntu-22.04
           rust: stable
           target: x86_64-unknown-linux-gnu
           artifact_name: zman
           asset_name: zman-linux-amd64
 
         - build: linux-musl
-          os: ubuntu-18.04
+          os: ubuntu-22.04
           rust: stable
           target: x86_64-unknown-linux-musl
           artifact_name: zman
           asset_name: zman-linux-amd64-musl
+          use-cross: true
 
         - build: macos
           os: macos-latest
@@ -44,7 +45,7 @@ jobs:
           asset_name: zman-macos-amd64
 
         - build: win-msvc
-          os: windows-2019
+          os: windows-2022
           rust: stable
           target: x86_64-pc-windows-msvc
           artifact_name: zman.exe
@@ -53,7 +54,7 @@ jobs:
           asset_name: zman-windows-amd64-msvc.exe
 
         - build: win-gnu
-          os: windows-2019
+          os: windows-2022
           rust: stable
           target: x86_64-pc-windows-gnu
           artifact_name: zman.exe
@@ -61,23 +62,22 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+        uses: actions/checkout@v3
 
       - name: Install Rust
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ matrix.rust }}
-          profile: minimal
-          override: true
           target: ${{ matrix.target }}
+
+      - name: Install cross
+        if: ${{ matrix.use-cross == true }}
+        uses: taiki-e/install-action@cross
 
       - name: Use Cross
         # currently only used for non-windows
         # because they didn't pick up these variables
         run: |
-          cargo install cross
           echo "CARGO=cross" >> $GITHUB_ENV
           echo "TARGET_FLAGS=--target ${{ matrix.target }}" >> $GITHUB_ENV
           echo "TARGET_DIR=./target/${{ matrix.target }}" >> $GITHUB_ENV
@@ -96,16 +96,9 @@ jobs:
         run: |
           strip "target/${{ matrix.target }}/release/zman"
 
-      - name: Get CHANGELOG.md entry
-        id: changelog_reader
-        uses: mindsers/changelog-reader-action@v2
-        with:
-          version: ${{ steps.tag.outputs.current_version }}
-          path: ./CHANGELOG.md
-
       - name: Upload binaries to release
         if: matrix.build == 'linux' || matrix.build == 'linux-musl' || matrix.build == 'macos'
-        uses: svenstaro/upload-release-action@v1-release
+        uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/${{ matrix.target }}/release/${{ matrix.artifact_name }}
@@ -115,7 +108,7 @@ jobs:
 
       - name: Upload binaries to release
         if: matrix.build == 'win-msvc' || matrix.build == 'win-gnu'
-        uses: svenstaro/upload-release-action@v1-release
+        uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/release/${{ matrix.artifact_name }}
