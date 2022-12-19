@@ -9,15 +9,15 @@ pub fn month() -> Result<f64, Error> {
 
 fn month_ratio(today: Date) -> Result<f64, Error> {
     let start = Date::from_calendar_date(today.year(), today.month(), 1)?;
-    let end_date = end_date_in_current_month(today);
+    let end_date = end_date_in_current_month(today)?;
     let end = Date::from_calendar_date(today.year(), today.month(), end_date as u8)?;
     compute(today, start, end)
 }
 
 /// Count the end date in current month
-fn end_date_in_current_month(today: Date) -> i64 {
+fn end_date_in_current_month(today: Date) -> Result<i64, Error> {
     let (year, month) = (today.year(), today.month());
-    let start = Date::from_calendar_date(year, month, 1).unwrap();
+    let start = Date::from_calendar_date(year, month, 1)?;
 
     let end_year = if month == Month::December {
         year + 1
@@ -29,9 +29,9 @@ fn end_date_in_current_month(today: Date) -> i64 {
     } else {
         month.next()
     };
-    let end = Date::from_calendar_date(end_year, end_month, 1).unwrap();
+    let end = Date::from_calendar_date(end_year, end_month, 1)?;
 
-    (end - start).whole_days()
+    Ok((end - start).whole_days())
 }
 
 #[cfg(test)]
