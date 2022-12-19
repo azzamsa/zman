@@ -1,13 +1,13 @@
-use anyhow::Result;
 use time::{Date, Month};
 
 use super::{compute, today};
+use crate::error::Error;
 
-pub fn month() -> Result<f64> {
+pub fn month() -> Result<f64, Error> {
     month_ratio(today()?)
 }
 
-fn month_ratio(today: Date) -> Result<f64> {
+fn month_ratio(today: Date) -> Result<f64, Error> {
     let start = Date::from_calendar_date(today.year(), today.month(), 1)?;
     let end_date = end_date_in_current_month(today);
     let end = Date::from_calendar_date(today.year(), today.month(), end_date as u8)?;
@@ -37,6 +37,7 @@ fn end_date_in_current_month(today: Date) -> i64 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use anyhow::Result;
     use time::macros::date;
 
     #[test]

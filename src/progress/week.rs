@@ -1,13 +1,13 @@
-use anyhow::Result;
 use time::{Date, Duration};
 
 use super::{compute, today};
+use crate::error::Error;
 
-pub fn week() -> Result<f64> {
+pub fn week() -> Result<f64, Error> {
     week_ratio(today()?)
 }
 
-fn week_ratio(current: Date) -> Result<f64> {
+fn week_ratio(current: Date) -> Result<f64, Error> {
     let start = current - Duration::days(current.weekday().number_days_from_monday().into());
     let end = start + Duration::days(6);
     compute(current, start, end)
@@ -16,6 +16,7 @@ fn week_ratio(current: Date) -> Result<f64> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use anyhow::Result;
     use time::macros::date;
 
     #[test]

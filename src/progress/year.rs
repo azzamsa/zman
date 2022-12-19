@@ -1,13 +1,13 @@
-use anyhow::Result;
 use time::{Date, Month};
 
 use super::{compute, today};
+use crate::error::Error;
 
-pub fn year() -> Result<f64> {
+pub fn year() -> Result<f64, Error> {
     year_ratio(today()?)
 }
 
-fn year_ratio(today: Date) -> Result<f64> {
+fn year_ratio(today: Date) -> Result<f64, Error> {
     let start = Date::from_calendar_date(today.year(), Month::January, 1)?;
     let end = Date::from_calendar_date(today.year() + 1, Month::January, 1)?;
     compute(today, start, end)
@@ -16,6 +16,7 @@ fn year_ratio(today: Date) -> Result<f64> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use anyhow::Result;
     use time::macros::date;
 
     #[test]

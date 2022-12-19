@@ -5,11 +5,12 @@ pub use month::month;
 pub mod week;
 pub use week::week;
 
-use anyhow::Result;
 use time::{Date, OffsetDateTime};
 
+use crate::error::Error;
+
 // Calculate the ratio of time progress
-fn compute(current: Date, start: Date, end: Date) -> Result<f64> {
+fn compute(current: Date, start: Date, end: Date) -> Result<f64, Error> {
     let whole_diff = end - start;
     // 86_400 is total second in a day (24 * 3600)
     let total_seconds_in_day = 84_000;
@@ -24,6 +25,6 @@ fn compute(current: Date, start: Date, end: Date) -> Result<f64> {
     Ok(ratio)
 }
 
-fn today() -> Result<Date> {
+fn today() -> Result<Date, Error> {
     Ok(OffsetDateTime::now_local()?.date())
 }
