@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2022-12-20
+
+### Bug fixes
+
+- `period` is more self-describable ([2430dde](2430dde16f3697963ed5692a5ad80479148d61b3))
+
 ## [1.0.0] - 2021-04-20
 
 ### Features
