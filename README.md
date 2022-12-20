@@ -41,10 +41,10 @@ zman year --json                    ... a year progress bar with JSON format
 
 ```bash
 USAGE:
-    zman [FLAGS] [OPTIONS] [time]
+    zman [FLAGS] [OPTIONS] [period]
 
 ARGS:
-    <time>    A time to show [default: year]
+    <period>    A period to display [default: year]
 
 FLAGS:
     -h, --help       Prints help information
@@ -59,7 +59,7 @@ OPTIONS:
 
 ### Usage with other tools
 
-You can use Zman with i3status-rust to show salah time in your status bar.
+You can use Zman with i3status-rust to show time period in your status bar.
 
 ![i3status-rust-zman](docs/i3status-rust.png)
 
