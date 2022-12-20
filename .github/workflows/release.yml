@@ -71,7 +71,6 @@ jobs:
           target: ${{ matrix.target }}
 
       - name: Install cross
-        if: ${{ matrix.use-cross == true }}
         uses: taiki-e/install-action@cross
 
       - name: Use Cross
