@@ -8,9 +8,9 @@ use clap::{Parser, ValueEnum};
     after_long_help = "Bugs can be reported on GitHub: https://github.com/azzamsa/zman/issues"
 )]
 pub struct Opts {
-    /// A time to use
+    /// A period to display
     #[arg(value_enum)]
-    pub time: Time,
+    pub period: Period,
 
     /// Display progress in JSON formatted string
     #[arg(short = 'J', long)]
@@ -30,7 +30,7 @@ pub struct Opts {
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
-pub enum Time {
+pub enum Period {
     /// Year
     Year,
     /// Month
