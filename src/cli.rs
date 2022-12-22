@@ -29,7 +29,7 @@ pub struct Opts {
     pub rest_bar: String,
 }
 
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
+#[derive(Clone, ValueEnum)]
 pub enum Period {
     /// Year
     Year,
