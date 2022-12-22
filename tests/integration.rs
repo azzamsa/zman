@@ -1,11 +1,13 @@
-use anyhow::Result;
-use assert_cmd::prelude::*;
-use predicates::prelude::*;
 use std::process::Command;
+
+use anyhow::Result;
+use assert_cmd::{crate_name, prelude::*};
+use predicates::prelude::*;
 
 #[test]
 fn help() -> Result<()> {
-    let mut cmd = Command::cargo_bin("zman")?;
+    let mut cmd = Command::cargo_bin(crate_name!())?;
+
     cmd.arg("-h");
     cmd.assert()
         .success()
@@ -15,7 +17,8 @@ fn help() -> Result<()> {
 
 #[test]
 fn year() -> Result<()> {
-    let mut cmd = Command::cargo_bin("zman")?;
+    let mut cmd = Command::cargo_bin(crate_name!())?;
+
     cmd.arg("year");
     cmd.assert().success().stdout(predicate::str::contains("%"));
     Ok(())
@@ -23,7 +26,8 @@ fn year() -> Result<()> {
 
 #[test]
 fn year_json() -> Result<()> {
-    let mut cmd = Command::cargo_bin("zman")?;
+    let mut cmd = Command::cargo_bin(crate_name!())?;
+
     cmd.arg("year").arg("-J");
     cmd.assert().success().stdout(predicate::str::contains("}"));
     Ok(())
@@ -31,7 +35,8 @@ fn year_json() -> Result<()> {
 
 #[test]
 fn full_bar() -> Result<()> {
-    let mut cmd = Command::cargo_bin("zman")?;
+    let mut cmd = Command::cargo_bin(crate_name!())?;
+
     cmd.arg("year").arg("--full-bar").arg("▮");
     // \u{25ae} is ▮
     cmd.assert()
@@ -42,7 +47,8 @@ fn full_bar() -> Result<()> {
 
 #[test]
 fn rest_bar() -> Result<()> {
-    let mut cmd = Command::cargo_bin("zman")?;
+    let mut cmd = Command::cargo_bin(crate_name!())?;
+
     cmd.arg("year").arg("--rest-bar").arg("▯");
     // \u{25ae} is ▯
     cmd.assert()
