@@ -1,6 +1,4 @@
-# Development Guide
-
-## Release Checklist
+# Release Checklist
 
 - Ensure local `master` is up to date to `origin/master`.
 - Run `just up` to check outdated dependencies. Run `just up --write` and review dependency updates.

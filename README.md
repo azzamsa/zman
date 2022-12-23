@@ -37,27 +37,9 @@ zman week                           ... a week progress bar
 zman year --json                    ... a year progress bar with JSON format
 ```
 
-### Command-line options
+## Integration with other programs
 
-```bash
-USAGE:
-    zman [FLAGS] [OPTIONS] [period]
-
-ARGS:
-    <period>    A period to display [default: year]
-
-FLAGS:
-    -h, --help       Prints help information
-    -J, --json       Display progress in JSON formatted string
-    -V, --version    Prints version information
-
-OPTIONS:
-    -f, --full-bar <full_bar>    Set full bar icon [default: ▓]
-    -r, --rest-bar <rest_bar>    Set rest bar icon [default: ░]
-    -d, --width <width>          Adjust width of the bar (default: 20)
-```
-
-### Usage with other tools
+### Using zman with `i3status-rust`
 
 You can use Zman with i3status-rust to show time period in your status bar.
 
@@ -74,9 +56,11 @@ interval = 300
 json = true
 ```
 
+### Other tools
+
 See [more examples](examples/) to learn other variations.
 
-If you like `zman` to support your favourite status-bar, please open the issue
+If you like `zman` to support your favorite status-bar, please open the issue
 with the valid input of your status-bar. In i3status-rust
 the valid input it would be `{"icon": "ICON", "state": "STATE", "text": "YOURTEXT"}`.
 
@@ -89,7 +73,7 @@ pre-compiled binaries for GNU/Linux, macOS and Windows.
 
 ### From source
 
-Using Rust's package manager [cargo](https://github.com/rust-lang/cargo):
+With Rust's package manager [cargo](https://github.com/rust-lang/cargo), you can install fd via:
 
 ```bash
 cargo install zman
@@ -99,7 +83,10 @@ cargo install zman
 
 ```bash
 git clone https://github.com/azzamsa/zman
+
+# Build
 cd zman
+cargo build
 
 # Run unit tests and integration tests
 cargo test
@@ -116,7 +103,7 @@ To learn more read [contributing.md](docs/dev/contributing.md)
 
 Zman is a 'time' in Arabic/Turksih.
 
-## Inspired By
+## Inspirations
 
 Please check out this previous work that helped inspire the creation of zman.
 
@@ -124,6 +111,8 @@ Please check out this previous work that helped inspire the creation of zman.
 
 ## License
 
-Copyright (c) 2020 Azzamsa
+Copyright (c) 2020-2022 azzamsa
 
-Zman is distributed under the terms of [GPL V3 License](LICENSE).
+`zman` is distributed under the terms of the GPL v3 License.
+
+See the [LICENSE](LICENSE) for details.
