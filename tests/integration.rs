@@ -48,11 +48,16 @@ fn full_bar() -> Result<()> {
 #[test]
 fn rest_bar() -> Result<()> {
     let mut cmd = Command::cargo_bin(crate_name!())?;
+    let today = time::OffsetDateTime::now_local()?.date();
 
     cmd.arg("year").arg("--rest-bar").arg("▯");
     // \u{25ae} is ▯
-    cmd.assert()
-        .success()
-        .stdout(predicate::str::contains("\u{25af}"));
+    if today.month() != time::Month::December {
+        cmd.assert()
+            .success()
+            .stdout(predicate::str::contains("\u{25af}"));
+    }
+    cmd.assert().success();
+
     Ok(())
 }

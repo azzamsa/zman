@@ -41,8 +41,7 @@ lint:
 
 # Test the codebase.
 test:
-    cargo test --doc
-    cargo nextest run
+    cargo test -- --test-threads 1
 
 # Tasks to make the code-base comply with the rules. Mostly used in git hooks.
 comply: fmt lint _lint_doc test
