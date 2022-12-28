@@ -1,6 +1,6 @@
 use std::io::{self, Write};
 
-use colored::Colorize;
+use owo_colors::OwoColorize;
 
 pub struct Printer {
     ratio: f64,

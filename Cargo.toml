@@ -18,7 +18,7 @@ panic = 'abort'
 
 [dependencies]
 anyhow = "1.0"
-colored = "2.0.0"
+owo-colors = "3"
 thiserror = "1.0.38"
 
 [dependencies.clap]
