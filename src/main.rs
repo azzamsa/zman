@@ -8,6 +8,13 @@ use zman::{
     progress,
 };
 
+fn main() {
+    if let Err(err) = run() {
+        eprintln!("Error: {:?}", err);
+        process::exit(1);
+    }
+}
+
 fn run() -> Result<()> {
     let opts = Opts::parse();
 
@@ -31,11 +38,4 @@ fn run() -> Result<()> {
     }
 
     Ok(())
-}
-
-fn main() {
-    if let Err(err) = run() {
-        eprintln!("Error: {:?}", err);
-        process::exit(1);
-    }
 }
