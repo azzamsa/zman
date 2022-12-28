@@ -1,6 +1,6 @@
 [package]
 name = "zman"
-version = "2.0.0"
+version = "2.0.1"
 authors = ["azzamsa <me@azzamsa.com>"]
 categories = ["date-and-time", "command-line-utilities"]
 edition = "2021"
@@ -19,18 +19,18 @@ panic = 'abort'
 [dependencies]
 anyhow = "1.0"
 owo-colors = "3"
-thiserror = "1.0.38"
+thiserror = "1.0"
 
 [dependencies.clap]
-version = "4.0.29"
+version = "4.0"
 features = ["suggestions", "color", "cargo", "derive"]
 
 [dependencies.time]
-version = "0.3"
+version = "0.3.17"
 features = ["macros", "formatting", "local-offset"]
 
 [dev-dependencies]
 cargo-husky = { version = "1", features = ["user-hooks"] }
 
-assert_cmd = "2.0.7"
-predicates = "2.1.4"
+assert_cmd = "2.0"
+predicates = "2.1"
