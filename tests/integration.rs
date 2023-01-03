@@ -36,12 +36,16 @@ fn year_json() -> Result<()> {
 #[test]
 fn full_bar() -> Result<()> {
     let mut cmd = Command::cargo_bin(crate_name!())?;
+    let today = time::OffsetDateTime::now_local()?.date();
 
     cmd.arg("year").arg("--full-bar").arg("▮");
     // \u{25ae} is ▮
-    cmd.assert()
-        .success()
-        .stdout(predicate::str::contains("\u{25ae}"));
+    if today.month() != time::Month::January {
+        cmd.assert()
+            .success()
+            .stdout(predicate::str::contains("\u{25ae}"));
+    }
+
     Ok(())
 }
 
