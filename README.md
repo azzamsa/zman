@@ -117,7 +117,7 @@ Please check out this previous work that helped inspire the creation of zman.
 
 ## License
 
-Copyright (c) 2020-2022 azzamsa
+Copyright (c) 2020-2023 azzamsa
 
 `zman` is distributed under the terms of the GPL v3 License.
 
