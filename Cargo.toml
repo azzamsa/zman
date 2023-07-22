@@ -21,7 +21,7 @@ chrono = "0.4.26"
 owo-colors = "3"
 
 # cli
-clap = { version = "4.0", features = ["suggestions", "color", "cargo", "derive"] }
+clap = { version = "4.3", features = ["suggestions", "color", "cargo", "derive"] }
 
 # error
 anyhow = "1.0"
@@ -29,7 +29,7 @@ thiserror = "1.0"
 
 [dev-dependencies]
 assert_cmd = "2.0"
-predicates = "2.1"
+predicates = "3.0"
 
 [package.metadata.binstall]
 pkg-url = "{ repo }/releases/download/v{ version }/{ name }-{ version}-{ target }.tar.gz"
