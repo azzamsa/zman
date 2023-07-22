@@ -101,7 +101,7 @@ jobs:
           cp -r {README.md,LICENSE*} "$staging/"
           cp -r {CHANGELOG.md,docs/*} "$staging/doc/"
 
-          if [ "${{ matrix.os }}" = "windows-2019" ]; then
+          if [[ "${{ matrix.os }}" =~ ^windows-.*$ ]]; then
             cp "target/${{ matrix.target }}/release/${{ env.APP_NAME }}.exe" "$staging/"
             cd "$staging"
             7z a "../$staging.zip" .
