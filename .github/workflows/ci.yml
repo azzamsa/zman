@@ -26,10 +26,6 @@ jobs:
       - name: Install latest dprint release
         uses: taiki-e/install-action@dprint
 
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: pest_fmt
-
       - name: Ensure `fmt` has been run
         run:  just fmt-check
 
