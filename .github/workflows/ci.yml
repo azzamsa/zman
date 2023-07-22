@@ -1,7 +1,7 @@
 name: CI
 
 env:
-  MIN_SUPPORTED_RUST_VERSION: "1.66.0"
+  MIN_SUPPORTED_RUST_VERSION: "1.70.0"
 
 on: [push, pull_request]
 
@@ -18,11 +18,17 @@ jobs:
         with:
           components: clippy, rustfmt
 
+      - uses: Swatinem/rust-cache@v2
+
       - name: Install latest just release
         uses: taiki-e/install-action@just
 
       - name: Install latest dprint release
         uses: taiki-e/install-action@dprint
+
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: pest_fmt
 
       - name: Ensure `fmt` has been run
         run:  just fmt-check
@@ -45,11 +51,12 @@ jobs:
         with:
           toolchain: ${{ env.MIN_SUPPORTED_RUST_VERSION }}
 
-      - name: Install latest nextest release
-        uses: taiki-e/install-action@nextest
+      - uses: Swatinem/rust-cache@v2
 
       - name: Install latest just release
         uses: taiki-e/install-action@just
+
+      - uses: taiki-e/install-action@nextest
 
       - name: Run tests
         run: just test
@@ -76,6 +83,8 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           target: ${{ matrix.target }}
+
+      - uses: Swatinem/rust-cache@v2
 
       - name: Show version information
         shell: bash

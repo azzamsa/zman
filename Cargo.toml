@@ -30,8 +30,6 @@ version = "0.3.17"
 features = ["macros", "formatting", "local-offset"]
 
 [dev-dependencies]
-cargo-husky = { version = "1", features = ["user-hooks"] }
-
 assert_cmd = "2.0"
 predicates = "2.1"
 
@@ -39,3 +37,10 @@ predicates = "2.1"
 pkg-url = "{ repo }/releases/download/v{ version }/{ name }-{ version}-{ target }.tar.gz"
 bin-dir = "{ bin }{ binary-ext }"
 pkg-fmt = "tgz"
+
+[package.metadata.release]
+sign-commit = true
+sign-tag = true
+tag-message = "v{{version}}"
+pre-release-commit-message = "v{{version}}"
+pre-release-hook = ["just", "_release-prepare", "{{version}}"]
