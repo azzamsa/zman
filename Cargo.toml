@@ -17,17 +17,15 @@ lto = true
 panic = 'abort'
 
 [dependencies]
-anyhow = "1.0"
+chrono = "0.4.26"
 owo-colors = "3"
+
+# cli
+clap = { version = "4.0", features = ["suggestions", "color", "cargo", "derive"] }
+
+# error
+anyhow = "1.0"
 thiserror = "1.0"
-
-[dependencies.clap]
-version = "4.0"
-features = ["suggestions", "color", "cargo", "derive"]
-
-[dependencies.time]
-version = "0.3.17"
-features = ["macros", "formatting", "local-offset"]
 
 [dev-dependencies]
 assert_cmd = "2.0"
