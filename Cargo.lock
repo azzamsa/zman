@@ -700,7 +700,7 @@ checksum = "1a515f5799fe4961cb532f983ce2b23082366b898e52ffbce459c86f67c8378a"
 
 [[package]]
 name = "zman"
-version = "2.0.2"
+version = "3.0.0"
 dependencies = [
  "anyhow",
  "assert_cmd",
