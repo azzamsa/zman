@@ -1,5 +1,5 @@
 use clap::Parser;
-use std::process;
+use std::{process, sync::Arc};
 
 use anyhow::Result;
 use zman::{
@@ -16,9 +16,9 @@ fn main() {
 }
 
 fn run() -> Result<()> {
-    let opts = Opts::parse();
+    let opts = Arc::new(Opts::parse());
 
-    let mut printer = Printer::new(opts.width, &opts.full_bar, &opts.rest_bar, opts.json);
+    let mut printer = Printer::new(Arc::clone(&opts));
     match opts.period {
         Period::Year => {
             let ratio = progress::year()?;
