@@ -2,12 +2,9 @@ use std::process::Command;
 
 use anyhow::Result;
 use assert_cmd::{crate_name, prelude::*};
-use chrono::prelude::*;
 use predicates::prelude::*; // Import chrono's prelude to use DateTime<Utc> and Local.
 
-fn today() -> NaiveDate {
-    Local::now().date_naive()
-}
+use zman::progress::today;
 
 #[test]
 fn help() -> Result<()> {

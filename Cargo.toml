@@ -18,7 +18,7 @@ lto = true
 panic = 'abort'
 
 [dependencies]
-chrono = "0.4.38"
+jiff = "0.1.4"
 owo-colors = "4"
 
 # cli
@@ -26,7 +26,6 @@ clap = { version = "4.5.13", features = ["suggestions", "color", "cargo", "deriv
 
 # error
 anyhow = "1.0"
-jiff = "0.1.4"
 thiserror = "1.0.63"
 
 [dev-dependencies]
