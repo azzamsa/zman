@@ -1,6 +1,6 @@
 [package]
 name = "zman"
-version = "3.0.0"
+version = "3.1.0"
 authors = ["azzamsa <noreply@azzamsa.com>"]
 categories = ["date-and-time", "command-line-utilities"]
 edition = "2021"
