@@ -1,5 +1,4 @@
-use jiff::civil;
-use jiff::ToSpan;
+use jiff::{civil, ToSpan};
 
 use super::compute;
 use crate::error::Error;
