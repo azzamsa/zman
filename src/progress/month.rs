@@ -1,10 +1,10 @@
 use jiff::civil;
 
-use super::{compute, today};
+use super::compute;
 use crate::error::Error;
 
-pub fn month() -> Result<f64, Error> {
-    month_ratio(today())
+pub fn month(today: civil::Date) -> Result<f64, Error> {
+    month_ratio(today)
 }
 
 fn month_ratio(today: civil::Date) -> Result<f64, Error> {

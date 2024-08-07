@@ -1,11 +1,11 @@
 use jiff::civil;
 use jiff::ToSpan;
 
-use super::{compute, today};
+use super::compute;
 use crate::error::Error;
 
-pub fn week() -> Result<f64, Error> {
-    week_ratio(today())
+pub fn week(today: civil::Date) -> Result<f64, Error> {
+    week_ratio(today)
 }
 
 fn week_ratio(current: civil::Date) -> Result<f64, Error> {

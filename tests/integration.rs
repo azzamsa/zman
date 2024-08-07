@@ -4,8 +4,6 @@ use anyhow::Result;
 use assert_cmd::{crate_name, prelude::*};
 use predicates::prelude::*; // Import chrono's prelude to use DateTime<Utc> and Local.
 
-use zman::progress::today;
-
 #[test]
 fn help() -> Result<()> {
     let mut cmd = Command::cargo_bin(crate_name!())?;
@@ -68,4 +66,8 @@ fn rest_bar() -> Result<()> {
     cmd.assert().success();
 
     Ok(())
+}
+
+fn today() -> jiff::civil::Date {
+    jiff::Zoned::now().date()
 }

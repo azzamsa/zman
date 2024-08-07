@@ -1,10 +1,10 @@
 use jiff::civil;
 
-use super::{compute, today};
+use super::compute;
 use crate::error::Error;
 
-pub fn year() -> Result<f64, Error> {
-    year_ratio(today())
+pub fn year(today: civil::Date) -> Result<f64, Error> {
+    year_ratio(today)
 }
 
 fn year_ratio(today: civil::Date) -> Result<f64, Error> {

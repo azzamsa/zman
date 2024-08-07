@@ -7,7 +7,6 @@ pub use week::week;
 
 use jiff::civil;
 use jiff::Unit;
-use jiff::Zoned;
 
 use crate::error::Error;
 
@@ -25,8 +24,4 @@ fn compute(current: civil::Date, start: civil::Date, end: civil::Date) -> Result
     // progress_ratio
     let ratio = current_diff_in_seconds / whole_diff_in_seconds;
     Ok(ratio)
-}
-
-pub fn today() -> civil::Date {
-    Zoned::now().date()
 }
