@@ -18,7 +18,7 @@ lto = true
 panic = 'abort'
 
 [dependencies]
-jiff = "0.1.4"
+jiff = "0.2.14"
 owo-colors = "4"
 
 # cli
