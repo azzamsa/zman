@@ -73,8 +73,9 @@ _release-prepare version:
 up arg="":
     #!/usr/bin/env bash
     if [ "{{ arg }}" = "--write" ]; then
-        cargo upgrade
+        cargo upgrade --incompatible --recursive --verbose
         cargo update
+        dprint config update
     else
         cargo outdated --root-deps-only
     fi;
