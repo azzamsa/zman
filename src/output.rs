@@ -42,13 +42,7 @@ impl Printer {
             self.opts.rest_bar.repeat(rest_int as usize),
             ratio_int
         );
-        let state = {
-            if ratio_int > 90 {
-                "Critical"
-            } else {
-                "Info"
-            }
-        };
+        let state = { if ratio_int > 90 { "Critical" } else { "Info" } };
         // color
         if state == "Critical" && !self.opts.json {
             progress_fmt = format!("{}", progress_fmt.red());

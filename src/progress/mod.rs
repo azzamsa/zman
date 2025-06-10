@@ -5,7 +5,7 @@ pub use month::month;
 pub mod week;
 pub use week::week;
 
-use jiff::{civil, Unit};
+use jiff::{Unit, civil};
 
 use crate::error::Error;
 
