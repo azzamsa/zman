@@ -16,9 +16,7 @@ jobs:
 
       - uses: taiki-e/install-action@just
       - uses: taiki-e/install-action@dprint
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: typos-cli
+      - uses: taiki-e/install-action@typos
 
       - name: Ensure `fmt` has been run
         run:  just fmt-check
@@ -50,10 +48,10 @@ jobs:
         include:
           - { build: linux-gnu,  os: ubuntu-22.04, target: x86_64-unknown-linux-gnu    }
           - { build: linux-musl, os: ubuntu-22.04, target: x86_64-unknown-linux-musl   }
-          - { build: win-gnu,    os: windows-2022, target: x86_64-pc-windows-gnu       }
-          - { build: win-msvc,   os: windows-2022, target: x86_64-pc-windows-msvc      }
-          - { build: win32-msvc, os: windows-2022, target: i686-pc-windows-msvc        }
-          - { build: macos,      os: macos-12    , target: x86_64-apple-darwin         }
+          - { build: win-gnu,    os: windows-2025, target: x86_64-pc-windows-gnu       }
+          - { build: win-msvc,   os: windows-2025, target: x86_64-pc-windows-msvc      }
+          - { build: win32-msvc, os: windows-2025, target: i686-pc-windows-msvc        }
+          - { build: macos,      os: macos-15    , target: x86_64-apple-darwin         }
 
     steps:
       - name: Checkout source code
@@ -75,11 +73,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             --allow-unauthenticated musl-tools
-
-      - name: Rust cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          key: ${{ matrix.os }}-${{ matrix.target }}
 
       - name: Build
         run: cargo build --release --locked --target ${{ matrix.target }}

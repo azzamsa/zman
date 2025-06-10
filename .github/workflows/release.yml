@@ -32,10 +32,10 @@ jobs:
           git checkout v${{ env.RELEASE_VERSION }}
 
       - name: Generate a changelog
-        uses: orhun/git-cliff-action@v3
+        uses: orhun/git-cliff-action@v4
         id: git-cliff
         with:
-          config: configs/cliff.toml
+          config: .cliff.toml
           args: -vv --strip header --current
         env:
           OUTPUT: CHANGELOG.md.tmp
@@ -61,10 +61,10 @@ jobs:
         include:
           - { build: linux-gnu,  os: ubuntu-22.04, target: x86_64-unknown-linux-gnu    }
           - { build: linux-musl, os: ubuntu-22.04, target: x86_64-unknown-linux-musl   }
-          - { build: win-gnu,    os: windows-2022, target: x86_64-pc-windows-gnu       }
-          - { build: win-msvc,   os: windows-2022, target: x86_64-pc-windows-msvc      }
-          - { build: win32-msvc, os: windows-2022, target: i686-pc-windows-msvc        }
-          - { build: macos,      os: macos-12    , target: x86_64-apple-darwin         }
+          - { build: win-gnu,    os: windows-2025, target: x86_64-pc-windows-gnu       }
+          - { build: win-msvc,   os: windows-2025, target: x86_64-pc-windows-msvc      }
+          - { build: win32-msvc, os: windows-2025, target: i686-pc-windows-msvc        }
+          - { build: macos,      os: macos-15    , target: x86_64-apple-darwin         }
 
     steps:
       - name: Checkout
