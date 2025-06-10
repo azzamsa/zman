@@ -49,6 +49,8 @@ impl Printer {
         }
         // JSON
         if self.opts.json {
+            // Given how basic the JSON is,
+            // we won't need an external library to generate it.
             progress_fmt = format!(
                 r#"{{"icon": "{}", "state": "{}", "text": "{}: {}"}}"#,
                 "zman", state, self.ratio_char, progress_fmt
